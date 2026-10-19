@@ -1,12 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useTheme } from '../context/ThemeContext';
 
 export const MarqueeTicker: React.FC = () => {
-  const { accentHex } = useTheme();
-
   const items = [
-    'FULL-STACK MERN ARCHITECTURE',
+    'FULL-STACK PYTHON & DJANGO APPS',
     'INTUITIVE UX PSYCHOLOGY (HICK & FITTS)',
     'ZERO LAYOUT SHIFT (CLS = 0.00)',
     'SUB-SECOND CORE WEB VITALS',
@@ -17,31 +14,27 @@ export const MarqueeTicker: React.FC = () => {
   ];
 
   return (
-    <div className="py-4 border-y border-surface-border bg-midnight-950/40 backdrop-blur-md overflow-hidden relative select-none">
-      {/* Edge gradient masks for smooth fade in/out */}
-      <div className="absolute left-0 inset-y-0 w-24 bg-gradient-to-r from-midnight-950 to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 inset-y-0 w-24 bg-gradient-to-l from-midnight-950 to-transparent z-10 pointer-events-none" />
+    <div className="py-5 border-y border-black/10 bg-white overflow-hidden relative select-none">
+      {/* Edge gradient masks */}
+      <div className="absolute left-0 inset-y-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 inset-y-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
       <motion.div
         animate={{ x: ['0%', '-50%'] }}
         transition={{
           repeat: Infinity,
           ease: 'linear',
-          duration: 28,
+          duration: 30,
         }}
-        className="flex items-center gap-8 whitespace-nowrap w-max"
+        className="flex items-center gap-10 whitespace-nowrap w-max"
       >
         {[...items, ...items].map((text, idx) => (
-          <div key={idx} className="flex items-center gap-8 font-mono-code text-xs text-slate-500 dark:text-slate-400 tracking-widest">
-            <span className="hover:text-slate-900 dark:hover:text-slate-200 transition-colors">{text}</span>
-            <span
-              className="w-1.5 h-1.5 rounded-full"
-              style={{ backgroundColor: accentHex }}
-            />
+          <div key={idx} className="flex items-center gap-10 font-mono-code text-xs font-semibold text-neutral-500 tracking-widest">
+            <span className="hover:text-black transition-colors">{text}</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0" />
           </div>
         ))}
       </motion.div>
     </div>
   );
 };
-

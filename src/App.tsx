@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
 import { CustomCursor } from './components/CustomCursor';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
-import { AmbientBackground } from './components/AmbientBackground';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { MarqueeTicker } from './components/MarqueeTicker';
@@ -13,40 +12,77 @@ import { About } from './components/About';
 import { Experience } from './components/Experience';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { AllProjectsPage } from './components/AllProjectsPage';
 
 export const App: React.FC = () => {
+  const [currentView, setCurrentView] = useState<'home' | 'all-projects'>(() => {
+    if (typeof window !== 'undefined' && window.location.hash === '#all-projects') {
+      return 'all-projects';
+    }
+    return 'home';
+  });
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === '#all-projects') {
+        setCurrentView('all-projects');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        setCurrentView('home');
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const handleOpenAllProjects = () => {
+    window.location.hash = '#all-projects';
+    setCurrentView('all-projects');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleBackToHome = () => {
+    window.location.hash = '';
+    setCurrentView('home');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <ThemeProvider>
-      <div className="min-h-screen text-slate-100 relative selection:bg-lime-accent selection:text-midnight-950 font-sans transition-colors duration-700">
+      <div className="min-h-screen bg-white text-black relative selection:bg-black selection:text-white font-sans antialiased">
         {/* Hairline scroll progress bar */}
         <ScrollProgressBar />
 
-        {/* Dynamic theme-reactive ambient lighting and floating constellation canvas */}
-        <AmbientBackground />
-
         {/* Subtle global noise texture overlay */}
-        <div className="fixed inset-0 bg-grain pointer-events-none -z-0 opacity-70" />
+        <div className="fixed inset-0 bg-grain pointer-events-none -z-0 opacity-40" />
 
         {/* Custom desktop-only spring cursor */}
         <CustomCursor />
 
-        {/* Sticky frosted navigation bar */}
-        <Navbar />
+        {currentView === 'all-projects' ? (
+          <AllProjectsPage onBackToHome={handleBackToHome} />
+        ) : (
+          <>
+            {/* Sticky frosted navigation bar */}
+            <Navbar />
 
-        {/* Main Content Sections */}
-        <main className="relative z-10">
-          <Hero />
-          <MarqueeTicker />
-          <Projects />
-          <UxLab />
-          <Skills />
-          <About />
-          <Experience />
-          <Contact />
-        </main>
+            {/* Main Content Sections */}
+            <main className="relative z-10">
+              <Hero />
+              <MarqueeTicker />
+              <Projects onOpenAllProjects={handleOpenAllProjects} />
+              <UxLab />
+              <Skills />
+              <About />
+              <Experience />
+              <Contact />
+            </main>
 
-        {/* Footer */}
-        <Footer />
+            {/* Footer */}
+            <Footer />
+          </>
+        )}
       </div>
     </ThemeProvider>
   );

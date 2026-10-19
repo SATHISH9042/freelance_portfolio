@@ -5,15 +5,15 @@ import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { useTheme } from '../context/ThemeContext';
 
 export const Skills: React.FC = () => {
-  const { accentHex, playClickSound } = useTheme();
+  const { playClickSound } = useTheme();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
   const categoryIcons: Record<string, React.ReactNode> = {
-    'Frontend Engineering': <Code2 className="w-4 h-4 text-emerald-400" />,
-    'Backend & APIs': <Server className="w-4 h-4 text-blue-400" />,
-    'Databases & Storage': <Database className="w-4 h-4 text-amber-400" />,
-    'AI & Machine Learning': <Brain className="w-4 h-4 text-purple-400" />,
-    'Tools & Workflow': <Wrench className="w-4 h-4 text-slate-300" />,
+    'Frontend Engineering': <Code2 className="w-4 h-4 text-black" />,
+    'Backend & APIs': <Server className="w-4 h-4 text-black" />,
+    'Databases & Storage': <Database className="w-4 h-4 text-black" />,
+    'AI & Machine Learning': <Brain className="w-4 h-4 text-black" />,
+    'Tools & Workflow': <Wrench className="w-4 h-4 text-black" />,
   };
 
   const categories = ['All', ...PORTFOLIO_DATA.skills.map((c) => c.title)];
@@ -23,24 +23,21 @@ export const Skills: React.FC = () => {
   );
 
   return (
-    <section id="skills" className="py-24 md:py-32 relative bg-grain">
+    <section id="skills" className="py-24 md:py-32 relative bg-white border-t border-black/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-surface-border">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-black/10">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span
-                className="w-2 h-2 rounded-full"
-                style={{ backgroundColor: accentHex }}
-              />
-              <span className="text-xs font-mono-code uppercase tracking-widest text-slate-400">
+              <span className="w-2 h-2 rounded-full bg-black" />
+              <span className="text-xs font-mono-code uppercase tracking-widest text-neutral-500 font-semibold">
                 Verified Capabilities
               </span>
             </div>
-            <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight">
+            <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-black tracking-tight">
               Skills &amp; Technology Stack
             </h2>
-            <p className="text-slate-400 text-sm sm:text-base max-w-xl mt-2 font-light">
+            <p className="text-neutral-600 text-sm sm:text-base max-w-xl mt-2 font-normal">
               Technologies I confidently engineer with daily. Grounded in architectural utility—never arbitrary proficiency percentages.
             </p>
           </div>
@@ -56,8 +53,8 @@ export const Skills: React.FC = () => {
                 }}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-mono-code transition-all ${
                   selectedCategory === cat
-                    ? 'bg-slate-100 text-midnight-950 font-semibold shadow-md'
-                    : 'bg-midnight-900 border border-surface-border text-slate-400 hover:text-white hover:border-white/20'
+                    ? 'bg-black text-white font-semibold shadow-sm'
+                    : 'bg-white border border-black/10 text-neutral-600 hover:text-black hover:border-black/30'
                 }`}
               >
                 {cat.replace(' Engineering', '').replace(' & Storage', '').replace(' & Machine Learning', '')}
@@ -74,28 +71,28 @@ export const Skills: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: gIdx * 0.1 }}
-              className="p-6 rounded-2xl bg-midnight-900/80 border border-surface-border hover:border-white/20 transition-all flex flex-col justify-between shadow-xl"
+              transition={{ duration: 0.5, delay: gIdx * 0.08 }}
+              className="p-6 rounded-2xl bg-white border border-black/10 hover:border-black/30 transition-all flex flex-col justify-between shadow-sm hover:shadow-md"
             >
               <div>
                 {/* Category Header */}
-                <div className="flex items-center justify-between pb-4 mb-4 border-b border-surface-border">
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-black/5">
                   <div className="flex items-center gap-2.5">
-                    <div className="p-2 rounded-lg bg-midnight-950 border border-surface-border">
-                      {categoryIcons[group.title] || <Code2 className="w-4 h-4" />}
+                    <div className="p-2 rounded-lg bg-neutral-100 border border-black/5">
+                      {categoryIcons[group.title] || <Code2 className="w-4 h-4 text-black" />}
                     </div>
                     <div>
-                      <h3 className="font-display font-bold text-base text-white">
+                      <h3 className="font-display font-bold text-base text-black">
                         {group.title}
                       </h3>
-                      <span className="text-[10px] font-mono-code text-slate-500">
+                      <span className="text-[10px] font-mono-code text-neutral-500">
                         {group.skills.length} core tools
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-xs text-slate-400 mb-5 leading-relaxed font-light">
+                <p className="text-xs text-neutral-600 mb-5 leading-relaxed font-normal">
                   {group.description}
                 </p>
 
@@ -104,24 +101,25 @@ export const Skills: React.FC = () => {
                   {group.skills.map((skill) => (
                     <div
                       key={skill.name}
-                      className="p-2.5 rounded-xl bg-midnight-950/60 border border-surface-border/70 hover:border-white/20 transition-all flex items-start gap-2.5 group"
+                      className="p-2.5 rounded-xl bg-neutral-50 border border-black/5 hover:border-black/20 transition-all flex items-start gap-2.5 group"
                     >
                       <div
-                        className="w-1.5 h-1.5 rounded-full shrink-0 mt-1.5"
-                        style={{ backgroundColor: skill.highlight ? accentHex : '#4B5563' }}
+                        className={`w-1.5 h-1.5 rounded-full shrink-0 mt-1.5 ${
+                          skill.highlight ? 'bg-black' : 'bg-neutral-400'
+                        }`}
                       />
                       <div className="flex-1">
                         <div className="flex items-center justify-between">
-                          <span className="font-mono-code font-semibold text-xs text-slate-200 group-hover:text-white transition-colors">
+                          <span className="font-mono-code font-semibold text-xs text-neutral-900 group-hover:text-black transition-colors">
                             {skill.name}
                           </span>
                           {skill.highlight && (
-                            <span className="text-[9px] font-mono-code text-slate-400 bg-white/5 px-1.5 py-0.5 rounded">
+                            <span className="text-[9px] font-mono-code text-neutral-800 bg-black/5 px-1.5 py-0.5 rounded font-medium">
                               Core
                             </span>
                           )}
                         </div>
-                        <p className="text-[11px] text-slate-400 mt-0.5 leading-snug">
+                        <p className="text-[11px] text-neutral-500 mt-0.5 leading-snug">
                           {skill.purpose}
                         </p>
                       </div>
@@ -131,10 +129,10 @@ export const Skills: React.FC = () => {
               </div>
 
               {/* Card Footer */}
-              <div className="mt-6 pt-3 border-t border-surface-border/60 flex items-center justify-between text-[10px] font-mono-code text-slate-500">
+              <div className="mt-6 pt-3 border-t border-black/5 flex items-center justify-between text-[10px] font-mono-code text-neutral-500">
                 <span>Production Tested</span>
-                <span className="flex items-center gap-1 text-slate-400">
-                  <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                <span className="flex items-center gap-1 text-black font-medium">
+                  <CheckCircle2 className="w-3 h-3 text-black" />
                   <span>Confidently Maintained</span>
                 </span>
               </div>

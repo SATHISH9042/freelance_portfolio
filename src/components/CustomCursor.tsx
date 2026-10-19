@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useTheme } from '../context/ThemeContext';
 
 export const CustomCursor: React.FC = () => {
-  const { accentHex } = useTheme();
   const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(true);
 
   useEffect(() => {
-    // Check if device supports hover / is desktop
     const hasPointer = window.matchMedia('(pointer: fine)').matches;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -60,18 +57,16 @@ export const CustomCursor: React.FC = () => {
 
   return (
     <>
-      {/* Inner precise dot */}
+      {/* Inner precise black dot */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full"
+        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full bg-black shadow-sm"
         style={{
-          width: 8,
-          height: 8,
-          backgroundColor: accentHex,
-          boxShadow: `0 0 10px ${accentHex}`,
+          width: 7,
+          height: 7,
         }}
         animate={{
-          x: mousePosition.x - 4,
-          y: mousePosition.y - 4,
+          x: mousePosition.x - 3.5,
+          y: mousePosition.y - 3.5,
           scale: isHovered ? 0 : 1,
           opacity: isVisible ? 1 : 0,
         }}
@@ -80,16 +75,15 @@ export const CustomCursor: React.FC = () => {
 
       {/* Outer magnetic trailing ring */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9998] rounded-full border border-solid"
+        className="fixed top-0 left-0 pointer-events-none z-[9998] rounded-full border border-black/40"
         style={{
-          borderColor: accentHex,
-          backgroundColor: isHovered ? `${accentHex}1A` : 'transparent',
+          backgroundColor: isHovered ? 'rgba(0, 0, 0, 0.08)' : 'transparent',
         }}
         animate={{
-          x: mousePosition.x - (isHovered ? 24 : 16),
-          y: mousePosition.y - (isHovered ? 24 : 16),
-          width: isHovered ? 48 : 32,
-          height: isHovered ? 48 : 32,
+          x: mousePosition.x - (isHovered ? 22 : 15),
+          y: mousePosition.y - (isHovered ? 22 : 15),
+          width: isHovered ? 44 : 30,
+          height: isHovered ? 44 : 30,
           opacity: isVisible ? (isHovered ? 0.9 : 0.4) : 0,
         }}
         transition={{ type: 'spring', damping: 25, stiffness: 250, mass: 0.2 }}
@@ -97,4 +91,3 @@ export const CustomCursor: React.FC = () => {
     </>
   );
 };
-

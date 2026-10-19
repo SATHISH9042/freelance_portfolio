@@ -14,6 +14,7 @@ export interface Project {
   }[];
   myContribution: string;
   liveUrl?: string;
+  blogUrl?: string;
   githubUrl?: string;
   isPersonalProject: boolean;
   accentColor: string;
@@ -54,162 +55,191 @@ export interface UxPrinciple {
 
 export const PORTFOLIO_DATA = {
   personal: {
-    name: "Sathish Rao",
-    role: "Full-Stack MERN Developer & UI/UX Craftsman",
-    status: "Available for Freelance & High-Impact Roles",
+    name: "Sathish Rao S",
+    role: "Full Stack Developer & AI Engineer",
+    status: "Available for Software Engineering & Full Stack Roles",
     isAvailable: true,
-    location: "Bengaluru, India / Remote Worldwide",
-    email: "sathishrao.dev@gmail.com",
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
-    upwork: "https://www.upwork.com",
+    location: "Kumbakonam, Tamil Nadu, India",
+    email: "sathishrao158@gmail.com",
+    phone: "+91 9360142996",
+    github: "https://github.com/SATHISH9042",
+    linkedin: "https://www.linkedin.com/in/sathish-rao-50150b292",
     fiverr: "https://www.fiverr.com",
-    shortBio: "Full Stack Developer crafting responsive websites and web applications with modern technology and thoughtful UX.",
+    shortBio: "B.Tech CSE (AI & ML) student and Full Stack Developer crafting responsive web applications, Django REST APIs, and production-oriented AI agents.",
     fullBio: [
-      "I am a MERN stack developer who bridges the gap between clean backend engineering and high-fidelity interface design. I don't just assemble components; I study how users read, decide, and interact.",
-      "My development philosophy is rooted in engineering discipline: maintainable component architecture, accessible semantic code, optimized bundle sizes, and empathetic UX. Every design decision—from button padding to API response structures—serves a human purpose.",
-      "Whether building full-stack MVPs, optimizing frontend responsiveness, or integrating intelligent LLM-powered interfaces, I deliver digital products that are dependable, fast, and effortless to use."
+      "I am a B.Tech Computer Science and Engineering (Artificial Intelligence & Machine Learning) student at Periyar Maniammai Institute of Science and Technology, Tamil Nadu, with hands-on experience in Python, Django, REST APIs, SQL, JavaScript, Git/GitHub, and AI-powered application development.",
+      "During my Full Stack Development internship at VDart Pvt. Ltd., I developed and integrated REST APIs using Django, implemented server-side logic, connected backend components with relational databases, and debugged production workflows. At NxtWave, as a Teaching Assistant, I guided students through programming problems and clarified implementation approaches.",
+      "My development focus combines solid software engineering fundamentals (OOP, Data Structures & Algorithms, SQL) with modern AI capabilities—including end-to-end RAG pipelines, Model Context Protocol (MCP) workflows with ElevenLabs and Twilio, and human-centered UI/UX design."
     ],
     values: [
       {
         title: "Clean, Maintainable Code",
-        description: "Modular architecture, typed contracts with TypeScript, and reusable UI abstractions that scale without technical debt."
+        description: "Object-oriented programming, typed contracts, modular architecture, and structured backend services that scale reliably."
       },
       {
         title: "Responsive & Accessible Interfaces",
-        description: "Mobile-first layouts tested across real viewports, high contrast ratios, and keyboard-first navigation patterns."
+        description: "Mobile-first layouts, semantic DOM structure, and predictable user flows that reduce cognitive load across devices."
       },
       {
         title: "Intuitive User Journeys",
-        description: "Applying cognitive psychology (Hick's Law, Fitts's Law) to reduce cognitive load and maximize user conversion."
+        description: "Applying cognitive psychology (Jakob's Law, Hick's Law, Miller's Law) to streamline navigation and simplify decision-making."
       },
       {
         title: "Clear Communication & Reliable Delivery",
-        description: "Transparent sprint progress, clean documentation, proactive problem solving, and zero surprise blockers."
+        description: "Proven technical mentoring, clear documentation, Git collaboration, and proactive problem solving."
       },
       {
         title: "Continuous Learning & AI Integration",
-        description: "Actively combining traditional MERN stack resilience with modern AI workflows (RAG, LangChain, vector retrieval)."
+        description: "Building production-oriented AI agents with LLMs, RAG, vector embeddings, and Model Context Protocol (MCP) integrations."
       }
     ]
   },
 
   projects: [
     {
-      id: "saffron-leaf",
-      title: "Saffron Leaf Restaurant Website",
-      subtitle: "Responsive dining concept with interactive menu filtering & real-time reservations",
-      category: "Frontend & UI/UX",
-      badge: "Featured Concept & Live Prototype",
-      summary: "A modern, high-conversion culinary web experience featuring categorized interactive menus, dietary allergen filters, an ambient visual gallery, and an intuitive table reservation flow.",
-      problem: "Traditional restaurant websites are frequently slow, cluttered with unreadable PDF menus on mobile, and force users through clunky external booking engines that cause high drop-off rates.",
-      objective: "Design and implement a lightning-fast, mobile-first dining web application that provides instant menu search and a frictionless 3-step reservation experience.",
+      id: "college-chatbot",
+      title: "RAG-Based College Information Assistant",
+      subtitle: "Retrieval-augmented Q&A assistant for academic resources, circulars & regulations",
+      category: "AI & LLMs",
+      badge: "Featured AI Project",
+      summary: "An AI-powered information assistant capable of answering student queries from college documents, FAQs, notices, and academic resources with grounded citations.",
+      problem: "Students and applicants struggle to navigate fragmented college circulars, syllabus handbooks, and policy PDFs, creating repetitive administrative queries.",
+      objective: "Build an end-to-end application combining information retrieval, backend processing, chunking, and LLM-based response generation with verified source grounding.",
       features: [
-        "Live interactive menu with category switching (Starters, Mains, Desserts, Signature Beverages)",
-        "Instant dietary preference filters (Vegetarian, Vegan, Gluten-Free, Chef's Special)",
-        "Zero-PDF mobile-first responsive layout with high-resolution visual dish previews",
-        "Interactive table reservation system with dynamic party size selection and instant validation",
-        "Optimized layout achieving 95+ performance metrics with zero layout shift"
+        "Implemented document processing, text extraction, chunking, embedding generation, and semantic retrieval",
+        "Integrated retrieved context with an LLM to generate responses grounded in relevant source documents",
+        "Implemented source/reference display and handling for unknown questions to improve response transparency",
+        "Developed end-to-end application combining information retrieval, backend processing, and LLM-based generation",
+        "Built responsive interactive UI with preset academic inquiries for immediate validation"
       ],
       techStack: [
-        { name: "React.js", category: "frontend" },
-        { name: "Tailwind CSS", category: "frontend" },
-        { name: "JavaScript (ES6+)", category: "frontend" },
-        { name: "Figma UI/UX", category: "tool" },
-        { name: "Responsive Design", category: "frontend" }
+        { name: "Python", category: "backend" },
+        { name: "RAG", category: "ai" },
+        { name: "Embeddings", category: "ai" },
+        { name: "Semantic Search", category: "ai" },
+        { name: "LLMs", category: "ai" }
       ],
-      myContribution: "Architected the component tree, designed the complete UI system in Figma, engineered responsive menu filtering with instant state transitions, and implemented accessible booking forms with keyboard navigation.",
-      liveUrl: "https://saffron-leaf.demo.dev",
-      githubUrl: "https://github.com/example/saffron-leaf-restaurant",
+      myContribution: "Engineered document extraction and chunking pipelines, implemented semantic similarity search with vector embeddings, integrated LLM context grounding, and designed response transparency cards.",
+      liveUrl: "https://rag-college-chatbot-jade.vercel.app/",
+      githubUrl: "https://github.com/SATHISH9042",
+      isPersonalProject: true,
+      accentColor: "#8B5CF6"
+    },
+    {
+      id: "customer-support-agent",
+      title: "Tech News Update Voice Agent",
+      subtitle: "AI-powered voice agent workflow with ElevenLabs MCP, Twilio & outbound calling",
+      category: "AI & LLMs",
+      badge: "MCP & Automation Project",
+      summary: "An AI-powered Tech News Update Voice Agent built using ElevenLabs, Model Context Protocol (MCP), and Twilio to deliver technology news updates through automated voice calls.",
+      problem: "Traditional text feeds require manual reading and lack conversational immediacy for high-priority tech alerts and workflow notifications.",
+      objective: "Implement an MCP-based workflow connecting AI models with external communication tools to generate and deliver technology news updates through voice calls.",
+      features: [
+        "Built an AI-powered Tech News Update Voice Agent using ElevenLabs MCP and Twilio",
+        "Integrated AI-driven workflow components to generate and deliver technology news updates through voice calls",
+        "Implemented an MCP-based workflow connecting AI models with external communication tools",
+        "Successfully tested outbound AI-driven phone calls as part of the workflow automation project",
+        "Explored multi-channel integrations involving email, LinkedIn automation, voice calls, and AI workflows"
+      ],
+      techStack: [
+        { name: "MCP (Model Context Protocol)", category: "ai" },
+        { name: "Python / AI Workflow", category: "backend" },
+        { name: "ElevenLabs", category: "ai" },
+        { name: "Twilio", category: "tool" },
+        { name: "AI Agents", category: "ai" }
+      ],
+      myContribution: "Architected the MCP server integration, configured ElevenLabs speech synthesis and voice calling with Twilio webhooks, and implemented outbound calling pipeline orchestration.",
+      liveUrl: "https://sathish9042.github.io/Voice_agent/",
+      githubUrl: "https://github.com/SATHISH9042",
+      isPersonalProject: true,
+      accentColor: "#0066FF"
+    },
+    {
+      id: "saffron-leaf",
+      title: "Mobile Train-Booking Interface",
+      subtitle: "High-usability mobile booking interface with cognitive-load reduction principles",
+      category: "Frontend & UI/UX",
+      badge: "UI/UX & Interaction Design",
+      summary: "A mobile train-booking interface designed with strict focus on usability, information hierarchy, simplified navigation, and frictionless user flows.",
+      problem: "Existing transport and booking systems suffer from confusing navigation, visual clutter, and overwhelming choices that lead to booking errors and cognitive fatigue.",
+      objective: "Design a mobile train-booking interface applying UX psychology laws to reduce cognitive load and create predictable, pleasant user booking journeys.",
+      features: [
+        "Designed a mobile train-booking interface focused on usability, information hierarchy, and simplified navigation",
+        "Created low-fidelity wireframes and a high-fidelity prototype in Figma",
+        "Applied Jakob's Law, Hick's Law, and Miller's Law to improve navigation and reduce cognitive load",
+        "Designed predictable user flows for a simplified booking experience with clear visual cues",
+        "Structured step-by-step seat selection and ticket review interfaces with thumb-zone touch targets"
+      ],
+      techStack: [
+        { name: "Figma", category: "tool" },
+        { name: "UI/UX Design", category: "frontend" },
+        { name: "Interaction Design", category: "frontend" },
+        { name: "Wireframing", category: "tool" },
+        { name: "Prototyping", category: "frontend" }
+      ],
+      myContribution: "Conducted usability research, designed low-fidelity wireframes and interactive high-fidelity prototypes in Figma, and applied cognitive psychology laws to optimize user flows.",
+      blogUrl: "https://medium.com/@raos83421/designing-a-mobile-train-booking-interface-using-jakobs-hick-s-and-miller-s-laws-5853a325a8ef?sharedUserId=raos83421",
+      githubUrl: "https://github.com/SATHISH9042",
       isPersonalProject: true,
       accentColor: "#F59E0B"
     },
     {
       id: "finance-tracker",
       title: "Personal Finance Tracker",
-      subtitle: "Client-side wealth management interface with real-time analytics & local storage",
+      subtitle: "Full-stack financial interface with transaction management & localStorage",
       category: "Full-Stack",
-      badge: "Core Web Application",
-      summary: "A secure, privacy-first personal financial interface enabling users to monitor income, categorize expenditures, visualize month-over-month cash flow, and persist data client-side with zero latency.",
-      problem: "Users often hesitate to use heavy budgeting tools that require banking logins or send private financial telemetry to third-party servers, yet basic spreadsheets lack intuitive mobile input and real-time visualization.",
-      objective: "Build an accessible, private financial tracking web app that delivers instant financial metrics, clean expense categorization, and zero-latency data persistence in localStorage.",
+      badge: "Web Application Project",
+      summary: "A responsive, privacy-first personal financial interface with transaction management, analytics, and instant client-side data persistence.",
+      problem: "Users require lightweight, private tools to record expenditures and visualize month-over-month cash flow without clunky external server dependencies.",
+      objective: "Build a responsive web application providing instant balance computation, categorized logging, and local data persistence.",
       features: [
         "Real-time balance computation showing total net worth, monthly income, and expense breakdown",
         "Quick transaction logger with customizable tags (Housing, Food, Investment, Utilities)",
         "Instant visual category distribution and breakdown pills",
-        "Robust localStorage persistence layer with backup export & import capability",
-        "Zero tracking, offline-capable architecture guaranteeing total user privacy"
+        "Robust localStorage persistence layer ensuring privacy and offline availability",
+        "Optimized responsive layouts with clean typographical hierarchy"
       ],
       techStack: [
-        { name: "React.js", category: "frontend" },
-        { name: "TypeScript", category: "frontend" },
-        { name: "Tailwind CSS", category: "frontend" },
+        { name: "JavaScript", category: "frontend" },
+        { name: "HTML5 & CSS3", category: "frontend" },
+        { name: "Bootstrap / Tailwind", category: "frontend" },
         { name: "Web Storage API", category: "tool" },
-        { name: "Data Visualization", category: "frontend" }
+        { name: "Responsive Design", category: "frontend" }
       ],
-      myContribution: "Designed the dashboard UI, wrote custom state hooks for transaction caching and balance calculations, implemented input sanitation, and built responsive data visualization charts.",
-      liveUrl: "https://finance-tracker.demo.dev",
-      githubUrl: "https://github.com/example/personal-finance-tracker",
+      myContribution: "Engineered the calculation engine, implemented input sanitation and localStorage state sync, and designed a responsive, accessible dashboard.",
+      liveUrl: "https://sathish9042.github.io/Finance-Tracker/",
+      githubUrl: "https://github.com/SATHISH9042",
       isPersonalProject: true,
       accentColor: "#10B981"
     },
     {
-      id: "college-chatbot",
-      title: "RAG-Based College Chatbot",
-      subtitle: "Retrieval-augmented Q&A assistant for academic regulations & campus information",
-      category: "AI & LLMs",
-      badge: "AI Engineering & Prototype",
-      summary: "An intelligent retrieval-augmented generation (RAG) assistant that indexes institutional knowledge (course syllabi, admissions criteria, hostel policies) to answer student questions with verified citations.",
-      problem: "Students and prospective applicants struggle to navigate fragmented 100+ page college PDFs and outdated circulars, leading to overloaded administrative staff and repetitive inquiries.",
-      objective: "Develop a domain-specific Q&A pipeline that accurately retrieves relevant handbook excerpts and synthesizes plain-language responses with verifiable source attribution.",
+      id: "restaurant-website",
+      title: "Saffron Leaf Contemporary Restaurant Website",
+      subtitle: "High-conversion culinary website with interactive menus, filtering & table reservation",
+      category: "Full-Stack",
+      badge: "Full-Stack Web Application",
+      summary: "A high-performance, full-stack restaurant web application featuring interactive culinary menus with dietary filters, dynamic order basket calculation, and an intuitive online reservation booking system.",
+      problem: "Conventional restaurant websites suffer from static PDF menus, sluggish mobile experiences, and convoluted booking funnels that lose potential diners.",
+      objective: "Create an ultra-responsive, visually rich full-stack dining application offering instantaneous menu browsing, real-time diet filtering, and a frictionless reservation flow.",
       features: [
-        "Vector search pipeline indexing institutional PDFs and academic handbooks",
-        "Source citation display linking answers to specific section numbers and pages",
-        "Context-aware fallback when queries fall outside the institutional corpus",
-        "Streamlined chat UI with preset frequently asked questions for immediate answers",
-        "Optimized prompt templates preventing model hallucination on critical admission criteria"
+        "Interactive culinary menu categorized into Starters, Mains, and Desserts with dietary filtering (Veg, Gluten-Free)",
+        "Responsive, touch-friendly mobile layouts with optimized high-resolution culinary media",
+        "Integrated online reservation booking system with instant time-slot, party-size, and date selection",
+        "Dynamic order review basket displaying real-time bill calculations",
+        "Fast initial page loads with 100% Core Web Vitals compliance and WCAG accessibility"
       ],
       techStack: [
-        { name: "Python", category: "backend" },
-        { name: "LangChain", category: "ai" },
-        { name: "Vector Database", category: "database" },
-        { name: "React.js", category: "frontend" },
-        { name: "REST APIs", category: "backend" }
+        { name: "React", category: "frontend" },
+        { name: "Node.js / Express", category: "backend" },
+        { name: "REST APIs", category: "backend" },
+        { name: "Tailwind CSS", category: "frontend" },
+        { name: "Vercel", category: "tool" }
       ],
-      myContribution: "Configured document chunking and vector embeddings, implemented the semantic retrieval pipeline, and crafted a polished chat interface with streaming responses and citation expandable cards.",
-      liveUrl: "https://college-rag-bot.demo.dev",
-      githubUrl: "https://github.com/example/rag-college-chatbot",
+      myContribution: "Designed the visual hierarchy and interaction models, implemented the categorized menu with dynamic state filtering and full-stack reservation forms, and deployed the production release on Vercel.",
+      liveUrl: "https://restaurant-website-chi-eosin.vercel.app/",
+      githubUrl: "https://github.com/SATHISH9042",
       isPersonalProject: true,
-      accentColor: "#8B5CF6"
-    },
-    {
-      id: "customer-support-agent",
-      title: "Persona-Adaptive Customer Support Agent",
-      subtitle: "LLM-driven support system with dynamic empathy calibration & human escalation",
-      category: "AI & LLMs",
-      badge: "Advanced AI Concept",
-      summary: "An LLM-driven customer support architecture that evaluates customer sentiment and intent, dynamically adapts its tone (technical, empathetic, or concise), and routes unresolved queries to human tier-2 agents.",
-      problem: "Generic chatbots offer robotic, frustrating responses to distressed customers, while full human support desks face expensive ticket backlogs for routine inquiries.",
-      objective: "Engineer an empathetic, intelligent support assistant that dynamically adjusts communication style based on sentiment analysis while maintaining strict safeguards for human agent handoff.",
-      features: [
-        "Real-time sentiment scoring and customer mood detection (Frustrated, Inquiring, VIP)",
-        "Dynamic persona adaptation: calibrates tone from concise-technical to reassuringly empathetic",
-        "Deterministic escalation triggers: detects anger spikes or refund keywords to summon human agent",
-        "Knowledge retrieval integration for verified product specs and order status checks",
-        "Agent debugging console displaying prompt context, sentiment score, and confidence rating"
-      ],
-      techStack: [
-        { name: "Node.js", category: "backend" },
-        { name: "Express.js", category: "backend" },
-        { name: "LLM APIs", category: "ai" },
-        { name: "React.js", category: "frontend" },
-        { name: "Tailwind CSS", category: "frontend" }
-      ],
-      myContribution: "Created the multi-persona prompt orchestration engine, built the sentiment evaluation middleware, designed the customer-facing chat UI and the live supervisor escalation preview dashboard.",
-      liveUrl: "https://support-agent.demo.dev",
-      githubUrl: "https://github.com/example/persona-adaptive-support-agent",
-      isPersonalProject: true,
-      accentColor: "#0066FF"
+      accentColor: "#E11D48"
     }
   ] as Project[],
 
@@ -273,104 +303,185 @@ export const PORTFOLIO_DATA = {
 
   skills: [
     {
-      title: "Frontend Engineering",
-      description: "Building responsive, component-driven interfaces with pixel precision and fluid responsiveness.",
+      title: "Languages",
+      description: "Core programming and querying languages for full-stack and analytical engineering.",
       skills: [
-        { name: "React.js", purpose: "Component lifecycle, custom hooks, context architecture", highlight: true },
-        { name: "JavaScript (ES6+)", purpose: "Async/await, closures, functional programming, DOM performance", highlight: true },
-        { name: "Tailwind CSS", purpose: "Utility-first design systems, custom configuration, responsive grids", highlight: true },
-        { name: "HTML5 & CSS3", purpose: "Semantic markup, CSS Grid/Flexbox, accessibility (WCAG), CSS variables" },
-        { name: "Bootstrap", purpose: "Rapid responsive scaffolding and grid management" },
-        { name: "Framer Motion", purpose: "Physics-based micro-interactions, layout transitions, scroll triggers" }
+        { name: "Python", purpose: "Backend logic, AI workflows, scripting, automation", highlight: true },
+        { name: "JavaScript", purpose: "Modern asynchronous DOM manipulation, event loop, dynamic UI", highlight: true },
+        { name: "SQL", purpose: "Relational data querying, joins, schema operations", highlight: true }
       ]
     },
     {
       title: "Backend & APIs",
-      description: "Architecting clean RESTful services, server middleware, and structured communication layers.",
+      description: "Developing robust server-side application logic and structured API layers.",
       skills: [
-        { name: "Node.js", purpose: "Event loop architecture, stream handling, server runtime", highlight: true },
-        { name: "Express.js", purpose: "REST API routing, authentication middleware, error handling", highlight: true },
-        { name: "RESTful APIs", purpose: "Resource design, status codes, payload optimization, CORS handling", highlight: true }
+        { name: "Django", purpose: "REST framework, ORM models, authentication, backend services", highlight: true },
+        { name: "REST APIs", purpose: "API design, endpoint integration, payload validation", highlight: true },
+        { name: "API Integration", purpose: "Connecting external SaaS, communication & AI services", highlight: true },
+        { name: "Server-Side Development", purpose: "Routing, database connectivity, error handling", highlight: true }
+      ]
+    },
+    {
+      title: "Frontend Engineering",
+      description: "Crafting responsive, user-centered web interfaces with pixel precision.",
+      skills: [
+        { name: "HTML5 & CSS3", purpose: "Semantic structure, responsive styling, accessibility", highlight: true },
+        { name: "DOM Manipulation", purpose: "Interactive client behaviors and dynamic state updates", highlight: true },
+        { name: "Bootstrap", purpose: "Rapid responsive grid scaffolding and layout management" },
+        { name: "Responsive Web Design", purpose: "Cross-device fluid breakpoints from mobile to desktop", highlight: true },
+        { name: "React.js & Tailwind CSS", purpose: "Component-based architecture and utility design system" }
       ]
     },
     {
       title: "Databases & Storage",
-      description: "Modeling structured and document schemas with data integrity and indexing.",
+      description: "Database modeling, data integrity, and high-performance querying.",
       skills: [
-        { name: "MongoDB", purpose: "Document modeling, Mongoose schemas, aggregation pipelines", highlight: true },
-        { name: "MySQL", purpose: "Relational schema design, foreign keys, normalized queries", highlight: true }
+        { name: "MySQL", purpose: "Relational schema design, tables, queries, transactions", highlight: true },
+        { name: "SQL", purpose: "Structured data operations and optimization", highlight: true },
+        { name: "Relational Database Concepts", purpose: "Normalization, primary/foreign keys, ACID compliance", highlight: true }
       ]
     },
     {
-      title: "AI & Machine Learning",
-      description: "Integrating intelligent pipelines, LLM APIs, and vector retrieval into practical web applications.",
+      title: "AI / GenAI & Automation",
+      description: "Building production-oriented AI agents and retrieval-augmented pipelines.",
       skills: [
-        { name: "Python", purpose: "Data extraction, scripting, AI library orchestration", highlight: true },
-        { name: "LLM APIs & Prompting", purpose: "System prompts, structured JSON outputs, context engineering", highlight: true },
-        { name: "RAG Architecture", purpose: "Document indexing, chunking, similarity search", highlight: true },
-        { name: "LangChain", purpose: "Prompt chaining, retrieval QA chains, memory management" }
+        { name: "LLMs & Prompting", purpose: "Context orchestration, structured outputs, prompt engineering", highlight: true },
+        { name: "RAG Architecture", purpose: "Document processing, chunking, grounded retrieval", highlight: true },
+        { name: "Embeddings & Semantic Search", purpose: "Vector similarity matching, cosine distance, indexing", highlight: true },
+        { name: "AI Agents", purpose: "Autonomous goal execution, tool use, conversational agents", highlight: true },
+        { name: "Model Context Protocol (MCP)", purpose: "Standardized tool integration connecting models to tools (ElevenLabs, Twilio)", highlight: true }
       ]
     },
     {
-      title: "Tools & Workflow",
-      description: "Professional development tooling for clean version control, debugging, and UI design.",
+      title: "Software Engineering & Tools",
+      description: "Engineering methodologies, algorithms, and professional developer tooling.",
       skills: [
-        { name: "Git & GitHub", purpose: "Branching strategies, pull requests, semantic versioning", highlight: true },
-        { name: "VS Code", purpose: "Debugging, linting setups, workspace efficiency", highlight: true },
-        { name: "Figma", purpose: "Wireframing, UI prototyping, responsive layout systems", highlight: true }
+        { name: "OOP (Object-Oriented Programming)", purpose: "Modular class design, encapsulation, reusability", highlight: true },
+        { name: "Data Structures & Algorithms", purpose: "Problem solving, computational complexity, clean logic", highlight: true },
+        { name: "Debugging & Problem Solving", purpose: "Root-cause diagnosis, error tracing, fix verification", highlight: true },
+        { name: "Git & GitHub", purpose: "Branching workflows, pull requests, version control", highlight: true },
+        { name: "VS Code", purpose: "Integrated development, linting, debugging environment", highlight: true },
+        { name: "Figma", purpose: "UI/UX wireframing, high-fidelity prototypes, design systems", highlight: true }
       ]
     }
   ] as SkillCategory[],
 
   timeline: [
     {
-      id: "edu-1",
-      role: "Bachelor of Engineering (B.E.) in Computer Science",
-      organization: "Visvesvaraya Technological University (VTU)",
-      location: "Karnataka, India",
-      period: "2021 – 2025",
-      type: "Education",
-      description: [
-        "Core coursework in Data Structures, Algorithms, Database Management Systems, Web Technologies, and Software Engineering.",
-        "Led multiple academic project teams delivering responsive web applications and full-stack prototypes."
-      ],
-      skills: ["Data Structures", "Algorithms", "Web Technologies", "DBMS", "Software Engineering"]
-    },
-    {
-      id: "intern-1",
-      role: "Full-Stack Web Development Intern",
-      organization: "Technology Solutions Lab",
-      location: "Bengaluru, India (Hybrid)",
-      period: "2024",
+      id: "vdart-intern",
+      role: "Full Stack Developer",
+      organization: "VDart pvt.Ltd.",
+      location: "Kumbakonam, Tamil Nadu, India",
+      period: "Jun 2025 – Jul 2025",
       type: "Experience",
       description: [
-        "Developed reusable React components for customer-facing dashboards, improving interface responsiveness and component reusability.",
-        "Collaborated with backend engineers to integrate RESTful API endpoints and validate request payloads.",
-        "Implemented responsive design fixes across mobile, tablet, and desktop breakpoints."
+        "Developed and integrated REST APIs using Django for web-based applications and backend services.",
+        "Implemented server-side application logic and connected backend components with relational databases.",
+        "Performed SQL-based data operations for database-driven application functionality.",
+        "Debugged backend and application issues by identifying root causes and implementing fixes.",
+        "Worked with Git for version control during frontend and backend development.",
+        "Collaborated on application development tasks and translated functional requirements into working software components."
       ],
-      skills: ["React.js", "REST APIs", "Tailwind CSS", "Git", "Responsive UI"]
+      skills: ["Django", "REST APIs", "SQL", "MySQL", "Git", "Python", "Backend Development"]
     },
     {
-      id: "cert-1",
-      role: "Full-Stack MERN Specialization",
-      organization: "Industry Certified Curriculum",
-      location: "Online / Verified",
-      period: "2024",
+      id: "nxtwave-ta",
+      role: "Teaching Assistant",
+      organization: "Nxtwave",
+      location: "Remote, India",
+      period: "Aug 2025 – Jan 2026",
+      type: "Experience",
+      description: [
+        "Assisted learners in understanding programming and software development concepts through practical explanations.",
+        "Guided students through programming problems and debugging-related questions.",
+        "Strengthened technical communication by explaining programming concepts clearly to learners with different levels of understanding.",
+        "Collaborated with learners and peers to troubleshoot technical issues and clarify implementation approaches."
+      ],
+      skills: ["Python", "JavaScript", "Data Structures", "Debugging", "Technical Mentorship"]
+    },
+    {
+      id: "pmist-btech",
+      role: "B.Tech in Computer Science and Engineering (Artificial Intelligence & Machine Learning)",
+      organization: "Periyar Maniammai Institute of Science and Technology",
+      location: "Tamil Nadu, India",
+      period: "Jul 2023 – Dec 2027",
+      type: "Education",
+      description: [
+        "Pursuing B.Tech in CSE specializing in AI & Machine Learning with an 8.0 GPA academic standing.",
+        "Core study in Object-Oriented Programming, Data Structures & Algorithms, Relational Database Concepts, and AI/GenAI architectures.",
+        "Built academic and research applications including retrieval-augmented generation systems and voice-driven workflow automation."
+      ],
+      skills: ["AI & ML", "Python", "Data Structures & Algorithms", "SQL & DBMS", "8.0 GPA"]
+    },
+    {
+      id: "cert-mcp",
+      role: "Model Context Protocol (MCP) & MCP Project Certificate",
+      organization: "NxtWave / CCBP 4.0 Academy",
+      location: "Verified Credential",
+      period: "Aug 2025 – 2025",
       type: "Certification",
       description: [
-        "Comprehensive deep dive into React architecture, Node.js server design, Express middleware, and MongoDB document database design.",
-        "Built and deployed end-to-end full-stack applications with user authentication and CRUD operations."
+        "Certified in Anthropic's Model Context Protocol (MCP), connecting AI models with external tools, APIs, and voice systems.",
+        "Built and successfully tested an end-to-end voice agent with ElevenLabs MCP and Twilio."
       ],
-      skills: ["MongoDB", "Express.js", "React.js", "Node.js", "JWT Auth"]
+      skills: ["Model Context Protocol (MCP)", "AI Agents", "ElevenLabs", "Twilio", "Automation"]
+    },
+    {
+      id: "cert-genai",
+      role: "GenAI Buildathon",
+      organization: "NxtWave × OpenAI Academy",
+      location: "Academy Certification",
+      period: "2025",
+      type: "Certification",
+      description: [
+        "Hands-on building of generative AI applications utilizing modern LLMs, embeddings, and prompt orchestration in intensive academy sprint."
+      ],
+      skills: ["GenAI", "LLMs", "Embeddings", "Semantic Search", "Prompt Engineering"]
+    },
+    {
+      id: "cert-dynamic-web",
+      role: "Build Your Dynamic Web Application (JavaScript)",
+      organization: "NxtWave",
+      location: "Verified Credential",
+      period: "Sep 2025",
+      type: "Certification",
+      description: [
+        "Engineered dynamic web interfaces manipulating the DOM, asynchronous event handling, and API integrations with JavaScript."
+      ],
+      skills: ["JavaScript", "DOM Manipulation", "REST APIs", "Dynamic Web Apps"]
+    },
+    {
+      id: "cert-python",
+      role: "Programming Foundations with Python",
+      organization: "NxtWave / CCBP 4.0 Academy",
+      location: "Verified Credential",
+      period: "2025",
+      type: "Certification",
+      description: [
+        "Mastered foundational programming paradigms, algorithmic problem solving, functions, and structured data handling in Python."
+      ],
+      skills: ["Python", "Algorithms", "Problem Solving", "Data Structures"]
+    },
+    {
+      id: "cert-sql",
+      role: "Introduction to Database (SQL)",
+      organization: "NxtWave",
+      location: "Verified Credential",
+      period: "Apr 2026",
+      type: "Certification",
+      description: [
+        "Relational database design, querying, joins, transactions, and relational database concepts."
+      ],
+      skills: ["SQL", "MySQL", "Relational Database Concepts"]
     }
   ] as ExperienceItem[],
 
   services: [
     {
       title: "Full-Stack Web Applications",
-      badge: "MERN Stack",
-      description: "End-to-end web apps with scalable Node/Express backends, resilient MongoDB data models, and reactive React frontends.",
-      deliverables: ["Custom REST API architecture", "Authentication & database modeling", "Clean component state management"]
+      badge: "Python & Django",
+      description: "End-to-end web apps with scalable Django REST APIs, relational SQL database architecture, and responsive frontends.",
+      deliverables: ["Custom REST API architecture", "Relational database modeling & optimization", "Clean component state management"]
     },
     {
       title: "Responsive Websites & Landing Pages",

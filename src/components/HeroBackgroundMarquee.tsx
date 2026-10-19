@@ -1,151 +1,161 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useTheme } from '../context/ThemeContext';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
 export const HeroBackgroundMarquee: React.FC = () => {
-  const { accentHex, isDark } = useTheme();
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-  const row1 = [
-    'SATHISH RAO',
-    'FULL-STACK DEVELOPER',
-    'MERN ARCHITECT',
-    'SATHISH RAO',
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end start'],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 24,
+    restDelta: 0.001,
+  });
+
+  // Slow traction movement left and right driven by scroll
+  const x1 = useTransform(smoothProgress, [0, 1], ['0%', '-30%']);
+  const x2 = useTransform(smoothProgress, [0, 1], ['-30%', '0%']);
+  const x3 = useTransform(smoothProgress, [0, 1], ['-5%', '-35%']);
+  const x4 = useTransform(smoothProgress, [0, 1], ['-35%', '-5%']);
+  const x5 = useTransform(smoothProgress, [0, 1], ['0%', '-25%']);
+
+  const namesRow = [
+    'SATHISH RAO S',
+    'SATHISH RAO S',
+    'SATHISH RAO S',
+    'SATHISH RAO S',
+    'SATHISH RAO S',
+    'SATHISH RAO S',
+  ];
+
+  const roleRowA = [
+    'SATHISH RAO S',
+    'FULL STACK DEVELOPER',
+    'SATHISH RAO S',
+    'PYTHON & DJANGO',
+    'SATHISH RAO S',
+    'AI & MCP ARCHITECT',
+  ];
+
+  const roleRowB = [
     'UI/UX CRAFTSMAN',
-    'CREATIVE TECHNOLOGIST',
-  ];
-
-  const row2 = [
-    'REACT & NODE.JS',
-    'SATHISH RAO',
-    'BESPOKE WEB APPS',
-    'INTELLIGENT RAG & AI',
-    'SATHISH RAO',
-    'DESIGN PSYCHOLOGY',
-  ];
-
-  const row3 = [
-    'CREATIVE ENGINEERING',
-    'ZERO LATENCY',
-    'SATHISH RAO',
-    'ACCESSIBLE INTERFACES',
-    'SATHISH RAO',
-    'EFFORTLESS UX',
+    'SATHISH RAO S',
+    'REST APIS & SQL',
+    'SATHISH RAO S',
+    'RAG & LLM WORKFLOWS',
+    'SATHISH RAO S',
   ];
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden select-none z-0 flex flex-col justify-center gap-6 sm:gap-10 md:gap-12 opacity-80 py-8">
-      {/* Row 1: Leftward flow */}
-      <motion.div
-        animate={{ x: ['0%', '-50%'] }}
-        transition={{
-          repeat: Infinity,
-          ease: 'linear',
-          duration: 38,
-        }}
-        className="flex items-center gap-8 whitespace-nowrap w-max will-change-transform"
-      >
-        {[...row1, ...row1, ...row1].map((text, i) => {
-          const isName = text === 'SATHISH RAO';
-          return (
-            <div key={i} className="flex items-center gap-8">
-              <span
-                className={`font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-[105px] tracking-tighter uppercase transition-colors duration-500 ${
-                  isName
-                    ? isDark
-                      ? 'stroke-text font-black'
-                      : 'text-slate-900/[0.07] stroke-text font-black'
-                    : 'stroke-text opacity-70'
-                }`}
-                style={{
-                  color: isName ? `${accentHex}18` : 'transparent',
-                  WebkitTextStroke: isDark
-                    ? `1.5px rgba(255, 255, 255, ${isName ? 0.16 : 0.07})`
-                    : `1.5px rgba(15, 23, 42, ${isName ? 0.18 : 0.08})`,
-                }}
-              >
-                {text}
+    <div
+      ref={containerRef}
+      className="absolute inset-0 pointer-events-none overflow-hidden select-none z-0 flex flex-col justify-around py-4 opacity-95"
+    >
+      {/* Row 1: Massive Bold Names (Moves Left with Scroll + Continuous Drift) */}
+      <motion.div style={{ x: x1 }} className="will-change-transform">
+        <motion.div
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ repeat: Infinity, duration: 35, ease: 'linear' }}
+          className="flex items-center gap-8 sm:gap-12 whitespace-nowrap"
+        >
+          {[...namesRow, ...namesRow, ...namesRow, ...namesRow].map((name, i) => (
+            <div key={i} className="flex items-center gap-8 sm:gap-12">
+              <span className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-[115px] xl:text-[140px] tracking-tighter uppercase stroke-text">
+                {name}
               </span>
-              <span
-                className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full opacity-40 shrink-0"
-                style={{ backgroundColor: accentHex }}
-              />
+              <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-black/20 shrink-0" />
             </div>
-          );
-        })}
+          ))}
+        </motion.div>
       </motion.div>
 
-      {/* Row 2: Rightward flow (Opposite direction for mesmerizing depth) */}
-      <motion.div
-        animate={{ x: ['-50%', '0%'] }}
-        transition={{
-          repeat: Infinity,
-          ease: 'linear',
-          duration: 45,
-        }}
-        className="flex items-center gap-8 whitespace-nowrap w-max will-change-transform"
-      >
-        {[...row2, ...row2, ...row2].map((text, i) => {
-          const isName = text === 'SATHISH RAO';
-          return (
-            <div key={i} className="flex items-center gap-8">
-              <span
-                className={`font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-[105px] tracking-tighter uppercase transition-colors duration-500 ${
-                  isName
-                    ? isDark
-                      ? 'stroke-text font-black'
-                      : 'text-slate-900/[0.07] stroke-text font-black'
-                    : 'stroke-text opacity-70'
-                }`}
-                style={{
-                  color: isName ? `${accentHex}18` : 'transparent',
-                  WebkitTextStroke: isDark
-                    ? `1.5px rgba(255, 255, 255, ${isName ? 0.16 : 0.07})`
-                    : `1.5px rgba(15, 23, 42, ${isName ? 0.18 : 0.08})`,
-                }}
-              >
-                {text}
-              </span>
-              <span
-                className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full opacity-40 shrink-0"
-                style={{ backgroundColor: accentHex }}
-              />
-            </div>
-          );
-        })}
+      {/* Row 2: Roles & Name (Moves Right with Scroll + Continuous Drift Right) */}
+      <motion.div style={{ x: x2 }} className="will-change-transform">
+        <motion.div
+          animate={{ x: ['-50%', '0%'] }}
+          transition={{ repeat: Infinity, duration: 40, ease: 'linear' }}
+          className="flex items-center gap-8 sm:gap-12 whitespace-nowrap"
+        >
+          {[...roleRowA, ...roleRowA, ...roleRowA, ...roleRowA].map((text, i) => {
+            const isName = text === 'SATHISH RAO';
+            return (
+              <div key={i} className="flex items-center gap-8 sm:gap-12">
+                <span
+                  className={`font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-[115px] xl:text-[140px] tracking-tighter uppercase ${
+                    isName ? 'text-black/[0.08] font-black' : 'stroke-text'
+                  }`}
+                >
+                  {text}
+                </span>
+                <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-black/20 shrink-0" />
+              </div>
+            );
+          })}
+        </motion.div>
       </motion.div>
 
-      {/* Row 3: Leftward flow (Third layer for architectural depth) */}
-      <motion.div
-        animate={{ x: ['0%', '-50%'] }}
-        transition={{
-          repeat: Infinity,
-          ease: 'linear',
-          duration: 42,
-        }}
-        className="hidden md:flex items-center gap-8 whitespace-nowrap w-max will-change-transform"
-      >
-        {[...row3, ...row3, ...row3].map((text, i) => {
-          const isName = text === 'SATHISH RAO';
-          return (
-            <div key={i} className="flex items-center gap-8">
-              <span
-                className={`font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-[105px] tracking-tighter uppercase transition-colors duration-500 stroke-text`}
-                style={{
-                  color: isName ? `${accentHex}15` : 'transparent',
-                  WebkitTextStroke: isDark
-                    ? `1.5px rgba(255, 255, 255, ${isName ? 0.14 : 0.06})`
-                    : `1.5px rgba(15, 23, 42, ${isName ? 0.16 : 0.07})`,
-                }}
-              >
-                {text}
+      {/* Row 3: Bold Names Repeating (Moves Left with Scroll + Continuous Drift Left) */}
+      <motion.div style={{ x: x3 }} className="will-change-transform">
+        <motion.div
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ repeat: Infinity, duration: 32, ease: 'linear' }}
+          className="flex items-center gap-8 sm:gap-12 whitespace-nowrap"
+        >
+          {[...namesRow, ...namesRow, ...namesRow, ...namesRow].map((name, i) => (
+            <div key={i} className="flex items-center gap-8 sm:gap-12">
+              <span className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-[115px] xl:text-[140px] tracking-tighter uppercase text-black/[0.07]">
+                {name}
               </span>
-              <span
-                className="w-2.5 h-2.5 rounded-full opacity-30 shrink-0"
-                style={{ backgroundColor: accentHex }}
-              />
+              <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-black/20 shrink-0" />
             </div>
-          );
-        })}
+          ))}
+        </motion.div>
+      </motion.div>
+
+      {/* Row 4: Tech & Craftsmanship (Moves Right with Scroll + Continuous Drift Right) */}
+      <motion.div style={{ x: x4 }} className="hidden md:block will-change-transform">
+        <motion.div
+          animate={{ x: ['-50%', '0%'] }}
+          transition={{ repeat: Infinity, duration: 38, ease: 'linear' }}
+          className="flex items-center gap-8 sm:gap-12 whitespace-nowrap"
+        >
+          {[...roleRowB, ...roleRowB, ...roleRowB, ...roleRowB].map((text, i) => {
+            const isName = text === 'SATHISH RAO';
+            return (
+              <div key={i} className="flex items-center gap-8 sm:gap-12">
+                <span
+                  className={`font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-[115px] xl:text-[140px] tracking-tighter uppercase ${
+                    isName ? 'text-black/[0.08]' : 'stroke-text'
+                  }`}
+                >
+                  {text}
+                </span>
+                <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-black/20 shrink-0" />
+              </div>
+            );
+          })}
+        </motion.div>
+      </motion.div>
+
+      {/* Row 5: Bold Name Baseline (Moves Left with Scroll + Continuous Drift Left) */}
+      <motion.div style={{ x: x5 }} className="hidden lg:block will-change-transform">
+        <motion.div
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ repeat: Infinity, duration: 30, ease: 'linear' }}
+          className="flex items-center gap-8 sm:gap-12 whitespace-nowrap"
+        >
+          {[...namesRow, ...namesRow, ...namesRow, ...namesRow].map((name, i) => (
+            <div key={i} className="flex items-center gap-8 sm:gap-12">
+              <span className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-[115px] xl:text-[140px] tracking-tighter uppercase stroke-text">
+                {name}
+              </span>
+              <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-black/20 shrink-0" />
+            </div>
+          ))}
+        </motion.div>
       </motion.div>
     </div>
   );

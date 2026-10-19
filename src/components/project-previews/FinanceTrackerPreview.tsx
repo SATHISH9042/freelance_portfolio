@@ -83,18 +83,24 @@ export const FinanceTrackerPreview: React.FC = () => {
   const netBalance = totalIncome - totalExpense;
 
   return (
-    <div className="w-full bg-midnight-950 rounded-xl border border-surface-border overflow-hidden text-slate-100 flex flex-col h-full shadow-2xl">
+    <div className="w-full bg-white rounded-xl border border-black/10 overflow-hidden text-neutral-900 flex flex-col h-full shadow-sm">
       {/* Mini App Bar */}
-      <div className="px-4 py-3 bg-midnight-900 border-b border-surface-border flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">
+      <div className="px-4 py-3 bg-neutral-50 border-b border-black/10 flex items-center justify-between">
+        <div className="flex items-center gap-2.5">
+          {/* macOS window control dots */}
+          <div className="flex items-center gap-1.5 mr-1">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] border border-[#E0443E]/80 shadow-xs inline-block" title="Close" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]/80 shadow-xs inline-block" title="Minimize" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] border border-[#1AAB29]/80 shadow-xs inline-block" title="Maximize" />
+          </div>
+          <div className="w-6 h-6 rounded bg-black text-white flex items-center justify-center font-bold text-xs shadow-sm">
             $
           </div>
-          <span className="font-display font-bold text-xs tracking-wide uppercase text-slate-200">
+          <span className="font-display font-bold text-xs tracking-wide uppercase text-black">
             VaultFinance
           </span>
-          <span className="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 hidden sm:inline-flex items-center gap-1">
-            <ShieldCheck className="w-3 h-3" />
+          <span className="text-[10px] text-neutral-600 bg-black/5 px-2 py-0.5 rounded border border-black/10 hidden sm:inline-flex items-center gap-1 font-medium">
+            <ShieldCheck className="w-3 h-3 text-black" />
             <span>Zero-Server / LocalStorage Only</span>
           </span>
         </div>
@@ -104,7 +110,7 @@ export const FinanceTrackerPreview: React.FC = () => {
             playClickSound();
             setShowAddForm(!showAddForm);
           }}
-          className="px-2.5 py-1 rounded text-[11px] font-medium bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/30 transition-colors flex items-center gap-1"
+          className="px-2.5 py-1 rounded text-[11px] font-semibold bg-black text-white hover:bg-neutral-800 transition-colors flex items-center gap-1 shadow-sm"
         >
           <Plus className="w-3 h-3" />
           <span>{showAddForm ? 'Close Form' : 'Log Entry'}</span>
@@ -115,29 +121,29 @@ export const FinanceTrackerPreview: React.FC = () => {
       <div className="p-4 flex-1 overflow-y-auto max-h-[360px] space-y-3.5">
         {/* Metric Cards Grid */}
         <div className="grid grid-cols-3 gap-2">
-          <div className="p-2.5 rounded-lg bg-midnight-900/90 border border-surface-border">
-            <span className="block text-[10px] font-mono-code text-slate-400">Net Wealth</span>
-            <span className="font-mono-code font-bold text-sm sm:text-base text-slate-100">
+          <div className="p-2.5 rounded-lg bg-neutral-50 border border-black/10">
+            <span className="block text-[10px] font-mono-code text-neutral-500">Net Balance</span>
+            <span className="font-mono-code font-bold text-sm sm:text-base text-black">
               ${netBalance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </span>
           </div>
 
-          <div className="p-2.5 rounded-lg bg-midnight-900/90 border border-surface-border">
-            <div className="flex items-center gap-1 text-[10px] font-mono-code text-emerald-400">
+          <div className="p-2.5 rounded-lg bg-neutral-50 border border-black/10">
+            <div className="flex items-center gap-1 text-[10px] font-mono-code text-black font-semibold">
               <ArrowUpRight className="w-3 h-3" />
               <span>Income</span>
             </div>
-            <span className="font-mono-code font-bold text-sm sm:text-base text-emerald-400">
+            <span className="font-mono-code font-bold text-sm sm:text-base text-black">
               +${totalIncome.toLocaleString('en-US', { minimumFractionDigits: 0 })}
             </span>
           </div>
 
-          <div className="p-2.5 rounded-lg bg-midnight-900/90 border border-surface-border">
-            <div className="flex items-center gap-1 text-[10px] font-mono-code text-rose-400">
+          <div className="p-2.5 rounded-lg bg-neutral-50 border border-black/10">
+            <div className="flex items-center gap-1 text-[10px] font-mono-code text-neutral-700 font-semibold">
               <ArrowDownRight className="w-3 h-3" />
               <span>Expenses</span>
             </div>
-            <span className="font-mono-code font-bold text-sm sm:text-base text-rose-400">
+            <span className="font-mono-code font-bold text-sm sm:text-base text-neutral-800">
               -${totalExpense.toLocaleString('en-US', { minimumFractionDigits: 0 })}
             </span>
           </div>
@@ -147,7 +153,7 @@ export const FinanceTrackerPreview: React.FC = () => {
         {showAddForm && (
           <form
             onSubmit={handleAddTransaction}
-            className="p-3 rounded-lg bg-midnight-900 border border-emerald-500/30 space-y-2 text-xs"
+            className="p-3 rounded-lg bg-neutral-50 border border-black/15 space-y-2 text-xs"
           >
             <div className="grid grid-cols-2 gap-2">
               <input
@@ -155,7 +161,7 @@ export const FinanceTrackerPreview: React.FC = () => {
                 placeholder="Description (e.g. Domain renew)"
                 value={newTitle}
                 onChange={(e) => setNewTitle(e.target.value)}
-                className="px-2.5 py-1.5 rounded bg-midnight-950 border border-surface-border text-slate-100 placeholder-slate-500 text-xs focus:outline-none focus:border-emerald-500"
+                className="px-2.5 py-1.5 rounded bg-white border border-black/15 text-neutral-900 placeholder-neutral-400 text-xs focus:outline-none focus:border-black"
                 required
               />
               <input
@@ -164,7 +170,7 @@ export const FinanceTrackerPreview: React.FC = () => {
                 placeholder="Amount (USD)"
                 value={newAmount}
                 onChange={(e) => setNewAmount(e.target.value)}
-                className="px-2.5 py-1.5 rounded bg-midnight-950 border border-surface-border text-slate-100 placeholder-slate-500 text-xs focus:outline-none focus:border-emerald-500"
+                className="px-2.5 py-1.5 rounded bg-white border border-black/15 text-neutral-900 placeholder-neutral-400 text-xs focus:outline-none focus:border-black"
                 required
               />
             </div>
@@ -174,10 +180,10 @@ export const FinanceTrackerPreview: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setNewType('expense')}
-                  className={`px-2 py-0.5 rounded text-[10px] ${
+                  className={`px-2 py-0.5 rounded text-[10px] font-medium ${
                     newType === 'expense'
-                      ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
-                      : 'text-slate-400'
+                      ? 'bg-black text-white font-semibold'
+                      : 'bg-white border border-black/10 text-neutral-600'
                   }`}
                 >
                   Expense
@@ -185,10 +191,10 @@ export const FinanceTrackerPreview: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setNewType('income')}
-                  className={`px-2 py-0.5 rounded text-[10px] ${
+                  className={`px-2 py-0.5 rounded text-[10px] font-medium ${
                     newType === 'income'
-                      ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-                      : 'text-slate-400'
+                      ? 'bg-black text-white font-semibold'
+                      : 'bg-white border border-black/10 text-neutral-600'
                   }`}
                 >
                   Income
@@ -197,7 +203,7 @@ export const FinanceTrackerPreview: React.FC = () => {
 
               <button
                 type="submit"
-                className="px-3 py-1 rounded bg-emerald-500 hover:bg-emerald-400 text-midnight-950 font-semibold text-xs transition-colors"
+                className="px-3 py-1 rounded bg-black hover:bg-neutral-800 text-white font-semibold text-xs transition-colors shadow-sm"
               >
                 Save Entry
               </button>
@@ -207,10 +213,10 @@ export const FinanceTrackerPreview: React.FC = () => {
 
         {/* Transaction History List */}
         <div>
-          <div className="flex items-center justify-between text-[11px] font-mono-code text-slate-400 pb-1.5 mb-1.5 border-b border-surface-border">
+          <div className="flex items-center justify-between text-[11px] font-mono-code text-neutral-500 pb-1.5 mb-1.5 border-b border-black/5">
             <span>Recent Activity ({transactions.length})</span>
-            <span className="flex items-center gap-1 text-[10px]">
-              <Database className="w-3 h-3 text-emerald-400" />
+            <span className="flex items-center gap-1 text-[10px] text-black font-medium">
+              <Database className="w-3 h-3 text-black" />
               <span>localStorage Live</span>
             </span>
           </div>
@@ -219,12 +225,12 @@ export const FinanceTrackerPreview: React.FC = () => {
             {transactions.slice(0, 4).map((t) => (
               <div
                 key={t.id}
-                className="p-2 rounded-lg bg-midnight-900/60 border border-surface-border flex items-center justify-between text-xs"
+                className="p-2 rounded-lg bg-neutral-50 border border-black/10 flex items-center justify-between text-xs"
               >
                 <div className="flex items-center gap-2.5">
                   <div
-                    className={`w-6 h-6 rounded flex items-center justify-center ${
-                      t.type === 'income' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-rose-500/10 text-rose-400'
+                    className={`w-6 h-6 rounded flex items-center justify-center font-bold text-xs ${
+                      t.type === 'income' ? 'bg-black/10 text-black' : 'bg-neutral-200 text-neutral-700'
                     }`}
                   >
                     {t.type === 'income' ? (
@@ -234,18 +240,14 @@ export const FinanceTrackerPreview: React.FC = () => {
                     )}
                   </div>
                   <div>
-                    <span className="font-medium text-slate-200 block text-xs">{t.title}</span>
-                    <span className="text-[10px] text-slate-500 font-mono-code flex items-center gap-1">
+                    <span className="font-medium text-black block text-xs">{t.title}</span>
+                    <span className="text-[10px] text-neutral-500 font-mono-code flex items-center gap-1">
                       <Tag className="w-2.5 h-2.5" /> {t.category} • {t.date}
                     </span>
                   </div>
                 </div>
 
-                <div
-                  className={`font-mono-code font-semibold text-xs ${
-                    t.type === 'income' ? 'text-emerald-400' : 'text-slate-300'
-                  }`}
-                >
+                <div className="font-mono-code font-semibold text-xs text-black">
                   {t.type === 'income' ? '+' : '-'}${t.amount.toFixed(2)}
                 </div>
               </div>
@@ -255,9 +257,9 @@ export const FinanceTrackerPreview: React.FC = () => {
       </div>
 
       {/* Mini App Footer */}
-      <div className="px-4 py-2 bg-midnight-900/90 border-t border-surface-border flex items-center justify-between text-[10px] font-mono-code text-slate-400">
+      <div className="px-4 py-2 bg-neutral-50 border-t border-black/5 flex items-center justify-between text-[10px] font-mono-code text-neutral-500">
         <span>Persistent Browser State</span>
-        <span className="text-emerald-400 font-medium">100% Client-Side Privacy</span>
+        <span className="text-black font-semibold">100% Client-Side Privacy</span>
       </div>
     </div>
   );

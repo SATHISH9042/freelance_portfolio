@@ -4,49 +4,36 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         midnight: {
-          950: 'var(--bg-primary)',
-          900: 'var(--bg-surface)',
-          850: 'var(--bg-surface-elevated)',
-          800: 'var(--bg-surface-hover)',
-          700: 'var(--border-color)',
-          600: 'var(--border-hover)',
+          950: '#FFFFFF',
+          900: '#F9FAFB',
+          850: '#F3F4F6',
+          800: '#E5E7EB',
+          700: '#D1D5DB',
+          600: '#9CA3AF',
         },
         charcoal: {
-          900: 'var(--bg-surface)',
-          800: 'var(--bg-surface-elevated)',
-          700: 'var(--border-color)',
-          600: 'var(--border-hover)',
-        },
-        lime: {
-          accent: '#D4FF00',
-          hover: '#E2FF33',
-          glow: 'rgba(212, 255, 0, 0.15)',
-          deep: '#8FB300',
-        },
-        cobalt: {
-          accent: '#0066FF',
-          hover: '#297BFF',
-          glow: 'rgba(0, 102, 255, 0.15)',
+          900: '#0A0A0A',
+          800: '#171717',
+          700: '#262626',
+          600: '#404040',
         },
         surface: {
-          card: 'var(--card-bg)',
-          cardHover: 'var(--card-bg-hover)',
-          border: 'var(--border-color)',
-          borderHover: 'var(--border-hover)',
+          card: '#FFFFFF',
+          cardHover: '#F9FAFB',
+          border: 'rgba(0, 0, 0, 0.08)',
+          borderHover: 'rgba(0, 0, 0, 0.2)',
         }
       },
       fontFamily: {
         sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
-        display: ['Syne', 'Clash Display', 'Cabinet Grotesk', 'Plus Jakarta Sans', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        display: ['Syne', 'Clash Display', 'Plus Jakarta Sans', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       animation: {
-        'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 6s ease-in-out infinite',
       },
       keyframes: {
