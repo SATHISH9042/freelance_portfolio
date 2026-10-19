@@ -9,20 +9,23 @@
 ## 🌟 Key Highlights & Architectural Features
 
 ### 1. Award-Winning Creative-Agency Aesthetic & Curated Themes
-- **5 Handcrafted Agency Theme Presets**:
-  1. 🌟 **Electric Lime**: Deep obsidian (`#06080C`) + Lime (`#D4FF00`) + Emerald accents.
-  2. 🌌 **Cyber Cobalt**: Deep ocean navy (`#050914`) + Cyber Blue (`#0066FF`) + Cyan accents.
-  3. 🔮 **Violet Amethyst**: Deep astral charcoal (`#090611`) + Electric Purple (`#A855F7`) + Pink accents.
-  4. 🌅 **Solar Ember**: Warm smoky espresso (`#0A0806`) + Amber Gold (`#F59E0B`) + Coral accents.
-  5. 🍵 **Neo Emerald**: Dark jade (`#050C09`) + Mint Emerald (`#10B981`) + Teal accents.
-- **Dynamic Floating Theme Switcher**: Interactive popover in the navigation bar with real-time color swatches, theme names, and audio toggles.
-- **Harmonic Theme Chimes**: When switching themes, an ascending major triad is synthesized via the browser's native **Web Audio API**.
-- **Interactive Ambient Lighting & Floating Constellations**: Canvas particle nodes drift and connect with delicate hairline strands while soft radial glow orbs follow the active theme's colors.
-- **Hairline Scroll Progress Indicator**: Spring-smoothed gradient bar at the top of the viewport tracking reading progression.
-- **Infinite Editorial Marquee Ticker**: Continuous typography ribbon between the Hero and Projects sections highlighting engineering values.
+- **Pristine White Theme (Default) + Dark Mode**:
+  1. 🤍 **Studio White (Default)**: Crisp luxury white (`#FFFFFF`) + Royal Cobalt Blue (`#0066FF`) + deep slate typography.
+  2. 🌿 **White Emerald**: Minimalist alabaster (`#FFFFFF`) + Mint Jade (`#059669`).
+  3. 💜 **White Violet**: High-fashion editorial (`#FFFFFF`) + Electric Purple (`#7C3AED`).
+  4. 🖤 **Midnight Obsidian**: Deep obsidian (`#06080C`) + Electric Lime (`#D4FF00`).
+  5. 🌌 **Cyber Cobalt**: Deep navy (`#050914`) + Cyber Blue (`#0066FF`).
+- **1-Click Sun ☀️ / Moon 🌙 Quick Toggle**: Instant toggle right in the header between Studio White and Dark Mode.
+- **Kinetic Background Running Names Animation**: 3 multi-directional horizontal scrolling ribbons streaming **SATHISH RAO** and engineering titles across the hero background in subtle stroke typography.
+- **Dynamic Specialty Scramble Rotator**: Cycles through roles (*Full-Stack MERN Developer, UI/UX Design Craftsman, AI & RAG Specialist*) with blur-to-sharpness decoder animation.
+- **Interactive Mouse Spotlight Illumination**: Flashlight radial illumination following the cursor over the background running names.
+- **Floating Interactive Tech Badges**: Draggable/hoverable spring pills (*React 18, Node & Express, MongoDB, UX Psychology*).
+- **Harmonic Theme Chimes**: Major triad synthesized via the native **Web Audio API** on theme switches.
+- **Hairline Scroll Progress Indicator**: Spring-smoothed gradient bar tracking page scroll progress.
+- **Infinite Editorial Marquee Ticker**: Continuous ribbon separating Hero from Projects highlighting engineering values.
 - **Staggered Word-by-Word Hero Reveal**: Headline emerges with spring-damped blur-to-sharpness animation.
-- **3D Card Perspective Tilt**: Interactive transformation card and project previews tilt subtly based on mouse coordinates.
-- **Physics-Based Custom Cursor**: Trailing magnetic ring and precise inner dot with hover scaling, auto-disabled on touch devices and for reduced motion.
+- **3D Card Perspective Tilt**: Interactive transformation card and project previews tilt based on mouse coordinates.
+- **Physics-Based Custom Cursor**: Trailing magnetic ring and precise inner dot with hover scaling, auto-disabled on touch devices.
 
 ### 2. High-Impact Hero Section
 - **Opening Headline**: *“I build digital experiences that feel effortless.”*
