@@ -9,18 +9,18 @@ export default {
     extend: {
       colors: {
         midnight: {
-          950: '#06080C',
-          900: '#0B0F17',
-          850: '#0F141F',
-          800: '#141A28',
-          700: '#1D2538',
-          600: '#2A344D',
+          950: 'var(--bg-primary)',
+          900: 'var(--bg-surface)',
+          850: 'var(--bg-surface-elevated)',
+          800: 'var(--bg-surface-hover)',
+          700: 'var(--border-color)',
+          600: 'var(--border-hover)',
         },
         charcoal: {
-          900: '#121316',
-          800: '#1A1C21',
-          700: '#24272E',
-          600: '#323640',
+          900: 'var(--bg-surface)',
+          800: 'var(--bg-surface-elevated)',
+          700: 'var(--border-color)',
+          600: 'var(--border-hover)',
         },
         lime: {
           accent: '#D4FF00',
@@ -34,10 +34,10 @@ export default {
           glow: 'rgba(0, 102, 255, 0.15)',
         },
         surface: {
-          card: 'rgba(255, 255, 255, 0.03)',
-          cardHover: 'rgba(255, 255, 255, 0.05)',
-          border: 'rgba(255, 255, 255, 0.08)',
-          borderHover: 'rgba(255, 255, 255, 0.18)',
+          card: 'var(--card-bg)',
+          cardHover: 'var(--card-bg-hover)',
+          border: 'var(--border-color)',
+          borderHover: 'var(--border-hover)',
         }
       },
       fontFamily: {
@@ -59,4 +59,3 @@ export default {
   },
   plugins: [],
 }
-

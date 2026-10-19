@@ -32,8 +32,8 @@ export const MarqueeTicker: React.FC = () => {
         className="flex items-center gap-8 whitespace-nowrap w-max"
       >
         {[...items, ...items].map((text, idx) => (
-          <div key={idx} className="flex items-center gap-8 font-mono-code text-xs text-slate-400 tracking-widest">
-            <span className="hover:text-slate-200 transition-colors">{text}</span>
+          <div key={idx} className="flex items-center gap-8 font-mono-code text-xs text-slate-500 dark:text-slate-400 tracking-widest">
+            <span className="hover:text-slate-900 dark:hover:text-slate-200 transition-colors">{text}</span>
             <span
               className="w-1.5 h-1.5 rounded-full"
               style={{ backgroundColor: accentHex }}
@@ -44,3 +44,4 @@ export const MarqueeTicker: React.FC = () => {
     </div>
   );
 };
+

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 
 export const AmbientBackground: React.FC = () => {
-  const { activeTheme, accentHex } = useTheme();
+  const { activeTheme, isDark } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -28,14 +28,14 @@ export const AmbientBackground: React.FC = () => {
     window.addEventListener('resize', handleResize);
 
     // Particle nodes
-    const particleCount = Math.min(Math.floor(width / 35), 45);
+    const particleCount = Math.min(Math.floor(width / 40), 38);
     const particles = Array.from({ length: particleCount }).map(() => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-      radius: Math.random() * 1.5 + 0.8,
-      alpha: Math.random() * 0.4 + 0.15,
+      vx: (Math.random() - 0.5) * 0.28,
+      vy: (Math.random() - 0.5) * 0.28,
+      radius: Math.random() * 1.4 + 0.8,
+      alpha: Math.random() * 0.35 + 0.1,
     }));
 
     const render = () => {
@@ -48,8 +48,8 @@ export const AmbientBackground: React.FC = () => {
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 130) {
-            const lineAlpha = (1 - dist / 130) * 0.08;
+          if (dist < 120) {
+            const lineAlpha = (1 - dist / 120) * (isDark ? 0.08 : 0.05);
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -74,7 +74,7 @@ export const AmbientBackground: React.FC = () => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = activeTheme.accent;
-        ctx.globalAlpha = p.alpha;
+        ctx.globalAlpha = isDark ? p.alpha : p.alpha * 0.6;
         ctx.fill();
       }
 
@@ -88,7 +88,11 @@ export const AmbientBackground: React.FC = () => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [activeTheme]);
+  }, [activeTheme, isDark]);
+
+  const orbOpacity1 = isDark ? [0.18, 0.28, 0.18] : [0.05, 0.1, 0.05];
+  const orbOpacity2 = isDark ? [0.12, 0.22, 0.12] : [0.04, 0.08, 0.04];
+  const orbOpacity3 = isDark ? [0.1, 0.18, 0.1] : [0.03, 0.07, 0.03];
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10 transition-colors duration-700">
@@ -96,7 +100,7 @@ export const AmbientBackground: React.FC = () => {
       <motion.div
         animate={{
           scale: [1, 1.15, 1],
-          opacity: [0.18, 0.28, 0.18],
+          opacity: orbOpacity1,
           x: [0, 20, 0],
           y: [0, -25, 0],
         }}
@@ -112,7 +116,7 @@ export const AmbientBackground: React.FC = () => {
       <motion.div
         animate={{
           scale: [1, 1.2, 1],
-          opacity: [0.12, 0.22, 0.12],
+          opacity: orbOpacity2,
           x: [0, -30, 0],
           y: [0, 20, 0],
         }}
@@ -129,7 +133,7 @@ export const AmbientBackground: React.FC = () => {
       <motion.div
         animate={{
           scale: [1, 1.1, 1],
-          opacity: [0.1, 0.18, 0.1],
+          opacity: orbOpacity3,
         }}
         transition={{
           duration: 18,
@@ -144,7 +148,9 @@ export const AmbientBackground: React.FC = () => {
       {/* Floating Constellation Canvas */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full opacity-60 pointer-events-none"
+        className={`absolute inset-0 w-full h-full pointer-events-none ${
+          isDark ? 'opacity-60' : 'opacity-40'
+        }`}
       />
     </div>
   );

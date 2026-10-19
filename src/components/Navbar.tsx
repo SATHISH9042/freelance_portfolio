@@ -15,7 +15,7 @@ const NAV_LINKS = [
 ];
 
 export const Navbar: React.FC = () => {
-  const { accentHex, activeTheme, setTheme, playClickSound } = useTheme();
+  const { accentHex, activeTheme, setTheme, isDark, playClickSound } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -58,7 +58,9 @@ export const Navbar: React.FC = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'py-3.5 bg-midnight-950/85 backdrop-blur-xl border-b border-surface-border shadow-2xl shadow-black/50'
+            ? isDark
+              ? 'py-3.5 bg-midnight-950/85 backdrop-blur-xl border-b border-surface-border shadow-2xl shadow-black/50'
+              : 'py-3.5 bg-white/85 backdrop-blur-xl border-b border-black/10 shadow-lg shadow-slate-200/40'
             : 'py-6 bg-transparent'
         }`}
       >
@@ -76,22 +78,26 @@ export const Navbar: React.FC = () => {
               aria-label="Sathish Rao Portfolio Homepage"
             >
               <div
-                className="w-9 h-9 rounded-lg bg-midnight-900 border border-surface-border flex items-center justify-center font-display font-bold text-sm tracking-wider group-hover:border-white/30 transition-colors shadow-sm"
+                className={`w-9 h-9 rounded-lg border flex items-center justify-center font-display font-bold text-sm tracking-wider transition-colors shadow-sm ${
+                  isDark ? 'bg-midnight-900 border-surface-border group-hover:border-white/30' : 'bg-white border-black/10 group-hover:border-black/30'
+                }`}
                 style={{ color: accentHex }}
               >
                 SR
               </div>
               <div className="hidden sm:flex flex-col">
-                <span className="font-display font-bold text-sm text-slate-100 tracking-tight flex items-center gap-1.5">
+                <span className="font-display font-bold text-sm text-slate-900 dark:text-slate-100 tracking-tight flex items-center gap-1.5">
                   {PORTFOLIO_DATA.personal.name}
                   <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: accentHex }} />
                 </span>
-                <span className="text-[11px] font-mono-code text-slate-400">Full-Stack &amp; UX</span>
+                <span className="text-[11px] font-mono-code text-slate-500 dark:text-slate-400">Full-Stack &amp; UX</span>
               </div>
             </a>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden md:flex items-center gap-1 bg-midnight-900/70 p-1.5 rounded-full border border-surface-border backdrop-blur-md">
+            <nav className={`hidden md:flex items-center gap-1 p-1.5 rounded-full border backdrop-blur-md ${
+              isDark ? 'bg-midnight-900/70 border-surface-border' : 'bg-slate-100/80 border-black/10'
+            }`}>
               {NAV_LINKS.map((link) => {
                 const isActive = activeSection === link.href.replace('#', '');
                 return (
@@ -99,7 +105,9 @@ export const Navbar: React.FC = () => {
                     key={link.name}
                     onClick={() => handleLinkClick(link.href)}
                     className={`relative px-4 py-1.5 text-xs font-medium rounded-full transition-all duration-200 cursor-pointer ${
-                      isActive ? 'text-midnight-950 font-semibold' : 'text-slate-300 hover:text-white'
+                      isActive
+                        ? isDark ? 'text-midnight-950 font-bold' : 'text-white font-bold'
+                        : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
                     {isActive && (
@@ -118,12 +126,14 @@ export const Navbar: React.FC = () => {
 
             {/* Right Controls: Theme Switcher, Availability Pill, CTA */}
             <div className="flex items-center gap-2 sm:gap-3">
-              {/* Enhanced Curated Theme Switcher */}
+              {/* Enhanced Curated Theme Switcher with Sun/Moon fast switch */}
               <ThemeSwitcher />
 
               {/* Availability Indicator (Subtle & Accurate) */}
               {PORTFOLIO_DATA.personal.isAvailable && (
-                <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-midnight-900/70 border border-surface-border text-[11px] font-mono-code text-slate-300">
+                <div className={`hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full border text-[11px] font-mono-code ${
+                  isDark ? 'bg-midnight-900/70 border-surface-border text-slate-300' : 'bg-white border-black/10 text-slate-700'
+                }`}>
                   <span className="relative flex h-2 w-2">
                     <span
                       className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
@@ -146,7 +156,7 @@ export const Navbar: React.FC = () => {
                 className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold tracking-wide transition-all shadow-sm group cursor-pointer"
                 style={{
                   backgroundColor: accentHex,
-                  color: '#06080C',
+                  color: isDark ? '#06080C' : '#FFFFFF',
                 }}
               >
                 <span>Let's Talk</span>
@@ -159,7 +169,9 @@ export const Navbar: React.FC = () => {
                   playClickSound();
                   setMobileMenuOpen(!mobileMenuOpen);
                 }}
-                className="md:hidden p-2 rounded-lg bg-midnight-900 border border-surface-border text-slate-300 hover:text-white"
+                className={`md:hidden p-2 rounded-lg border text-slate-700 dark:text-slate-300 ${
+                  isDark ? 'bg-midnight-900 border-surface-border hover:text-white' : 'bg-white border-black/10 hover:text-black'
+                }`}
                 aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -177,23 +189,25 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[65px] z-40 bg-midnight-950/98 backdrop-blur-2xl border-b border-surface-border p-6 md:hidden shadow-2xl"
+            className={`fixed inset-x-0 top-[65px] z-40 backdrop-blur-2xl border-b p-6 md:hidden shadow-2xl ${
+              isDark ? 'bg-midnight-950/98 border-surface-border' : 'bg-white/98 border-black/10 shadow-slate-300'
+            }`}
           >
             <div className="flex flex-col gap-3">
               {NAV_LINKS.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => handleLinkClick(link.href)}
-                  className="flex items-center justify-between py-2.5 px-3 rounded-lg text-left text-base font-medium text-slate-200 hover:bg-white/5 transition-colors"
+                  className="flex items-center justify-between py-2.5 px-3 rounded-lg text-left text-base font-medium text-slate-800 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer"
                 >
                   <span>{link.name}</span>
-                  <ArrowUpRight className="w-4 h-4 text-slate-500" />
+                  <ArrowUpRight className="w-4 h-4 text-slate-400" />
                 </button>
               ))}
 
               <div className="pt-4 mt-2 border-t border-surface-border flex flex-col gap-3">
                 <div className="flex flex-col gap-2">
-                  <span className="text-[11px] font-mono-code text-slate-400">Select Theme Aesthetic:</span>
+                  <span className="text-[11px] font-mono-code text-slate-500 dark:text-slate-400">Select Theme Aesthetic:</span>
                   <div className="grid grid-cols-5 gap-2">
                     {themeKeys.map((key) => {
                       const t = THEMES[key];
@@ -202,16 +216,18 @@ export const Navbar: React.FC = () => {
                         <button
                           key={key}
                           onClick={() => setTheme(key)}
-                          className={`p-2 rounded-xl flex flex-col items-center gap-1 border text-center transition-all ${
-                            isSelected ? 'bg-white/10 border-white' : 'border-surface-border'
+                          className={`p-2 rounded-xl flex flex-col items-center gap-1 border text-center transition-all cursor-pointer ${
+                            isSelected
+                              ? isDark ? 'bg-white/10 border-white' : 'bg-slate-200 border-black/20'
+                              : isDark ? 'border-surface-border' : 'border-black/10 bg-slate-50'
                           }`}
                         >
                           <span
                             className="w-4 h-4 rounded-full shadow-sm"
                             style={{ backgroundColor: t.accent }}
                           />
-                          <span className="text-[9px] font-mono-code text-slate-300 truncate w-full">
-                            {t.name.split(' ')[1]}
+                          <span className="text-[9px] font-mono-code text-slate-700 dark:text-slate-300 truncate w-full">
+                            {t.name.split(' ')[0]}
                           </span>
                         </button>
                       );
@@ -221,10 +237,10 @@ export const Navbar: React.FC = () => {
 
                 <button
                   onClick={() => handleLinkClick('#contact')}
-                  className="w-full py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 mt-2"
+                  className="w-full py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 mt-2 cursor-pointer"
                   style={{
                     backgroundColor: accentHex,
-                    color: '#06080C',
+                    color: isDark ? '#06080C' : '#FFFFFF',
                   }}
                 >
                   <span>Let's Build Something</span>

@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export type ThemePreset = 'lime' | 'cobalt' | 'amethyst' | 'amber' | 'emerald';
+export type ThemePreset = 'white-cobalt' | 'white-emerald' | 'white-violet' | 'dark-obsidian' | 'dark-cobalt';
 
 export interface ThemeConfig {
   id: ThemePreset;
   name: string;
   tagline: string;
+  isDark: boolean;
   accent: string;
   secondary: string;
   bgDark: string;
@@ -15,21 +16,59 @@ export interface ThemeConfig {
 }
 
 export const THEMES: Record<ThemePreset, ThemeConfig> = {
-  lime: {
-    id: 'lime',
-    name: 'Electric Lime',
-    tagline: 'Agency Neo / High Contrast',
+  'white-cobalt': {
+    id: 'white-cobalt',
+    name: 'Studio White',
+    tagline: 'Pristine White / Royal Cobalt',
+    isDark: false,
+    accent: '#0066FF',
+    secondary: '#00D2FF',
+    bgDark: '#FFFFFF',
+    bgSurface: '#F8FAFC',
+    glow: 'rgba(0, 102, 255, 0.22)',
+    textMuted: '#64748B',
+  },
+  'white-emerald': {
+    id: 'white-emerald',
+    name: 'White Emerald',
+    tagline: 'Minimalist Alabaster / Mint Jade',
+    isDark: false,
+    accent: '#059669',
+    secondary: '#0D9488',
+    bgDark: '#FFFFFF',
+    bgSurface: '#F8FAFC',
+    glow: 'rgba(5, 150, 105, 0.22)',
+    textMuted: '#64748B',
+  },
+  'white-violet': {
+    id: 'white-violet',
+    name: 'White Violet',
+    tagline: 'Fashion Editorial / Electric Purple',
+    isDark: false,
+    accent: '#7C3AED',
+    secondary: '#DB2777',
+    bgDark: '#FFFFFF',
+    bgSurface: '#FAF5FF',
+    glow: 'rgba(124, 58, 237, 0.22)',
+    textMuted: '#64748B',
+  },
+  'dark-obsidian': {
+    id: 'dark-obsidian',
+    name: 'Midnight Lime',
+    tagline: 'Deep Obsidian / Electric Lime',
+    isDark: true,
     accent: '#D4FF00',
     secondary: '#10B981',
     bgDark: '#06080C',
-    bgSurface: '#0E121A',
+    bgSurface: '#0E131F',
     glow: 'rgba(212, 255, 0, 0.22)',
     textMuted: '#94A3B8',
   },
-  cobalt: {
-    id: 'cobalt',
+  'dark-cobalt': {
+    id: 'dark-cobalt',
     name: 'Cyber Cobalt',
-    tagline: 'Deep Ocean & Electric Blue',
+    tagline: 'Deep Navy / Cyber Blue',
+    isDark: true,
     accent: '#0066FF',
     secondary: '#38BDF8',
     bgDark: '#050914',
@@ -37,44 +76,13 @@ export const THEMES: Record<ThemePreset, ThemeConfig> = {
     glow: 'rgba(0, 102, 255, 0.28)',
     textMuted: '#94A3B8',
   },
-  amethyst: {
-    id: 'amethyst',
-    name: 'Violet Amethyst',
-    tagline: 'Astral Cyber & Synthwave',
-    accent: '#A855F7',
-    secondary: '#EC4899',
-    bgDark: '#090611',
-    bgSurface: '#160E29',
-    glow: 'rgba(168, 85, 247, 0.26)',
-    textMuted: '#A78BFA',
-  },
-  amber: {
-    id: 'amber',
-    name: 'Solar Ember',
-    tagline: 'Warm Espresso & Molten Gold',
-    accent: '#F59E0B',
-    secondary: '#FB923C',
-    bgDark: '#0A0806',
-    bgSurface: '#18120D',
-    glow: 'rgba(245, 158, 11, 0.24)',
-    textMuted: '#FBBF24',
-  },
-  emerald: {
-    id: 'emerald',
-    name: 'Neo Emerald',
-    tagline: 'Dark Jade & Mint Matrix',
-    accent: '#10B981',
-    secondary: '#06B6D4',
-    bgDark: '#050C09',
-    bgSurface: '#0A1C14',
-    glow: 'rgba(16, 185, 129, 0.24)',
-    textMuted: '#6EE7B7',
-  },
 };
 
 interface ThemeContextType {
   activeTheme: ThemeConfig;
   setTheme: (preset: ThemePreset) => void;
+  toggleMode: () => void;
+  isDark: boolean;
   accentHex: string;
   accentGlow: string;
   soundEnabled: boolean;
@@ -87,12 +95,13 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [themePreset, setThemePreset] = useState<ThemePreset>('lime');
+  // Default to white-cobalt as requested!
+  const [themePreset, setThemePreset] = useState<ThemePreset>('white-cobalt');
   const [soundEnabled, setSoundEnabled] = useState<boolean>(false);
 
   const activeTheme = THEMES[themePreset];
+  const isDark = activeTheme.isDark;
 
-  // Synthesized Web Audio API sound effects
   const getAudioContext = () => {
     try {
       const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof window.AudioContext }).webkitAudioContext;
@@ -110,8 +119,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const gain = ctx.createGain();
 
     osc.type = 'sine';
-    osc.frequency.setValueAtTime(580, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(820, ctx.currentTime + 0.04);
+    osc.frequency.setValueAtTime(620, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(840, ctx.currentTime + 0.04);
 
     gain.gain.setValueAtTime(0.04, ctx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
@@ -131,8 +140,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const gain = ctx.createGain();
 
     osc.type = 'triangle';
-    osc.frequency.setValueAtTime(340, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(560, ctx.currentTime + 0.06);
+    osc.frequency.setValueAtTime(360, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + 0.06);
 
     gain.gain.setValueAtTime(0.05, ctx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.06);
@@ -144,13 +153,12 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     osc.stop(ctx.currentTime + 0.07);
   };
 
-  // Beautiful musical ascending triad chime on theme switch
   const playThemeChime = () => {
     if (!soundEnabled) return;
     const ctx = getAudioContext();
     if (!ctx) return;
 
-    const notes = [440, 554.37, 659.25, 880]; // A major arpeggio
+    const notes = [523.25, 659.25, 783.99, 1046.5]; // C major chord
     notes.forEach((freq, idx) => {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
@@ -175,14 +183,30 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     playThemeChime();
   };
 
+  const toggleMode = () => {
+    playPopSound();
+    if (activeTheme.isDark) {
+      setThemePreset('white-cobalt');
+    } else {
+      setThemePreset('dark-obsidian');
+    }
+  };
+
   useEffect(() => {
     const root = document.documentElement;
     root.style.setProperty('--accent-color', activeTheme.accent);
     root.style.setProperty('--accent-glow', activeTheme.glow);
     root.style.setProperty('--accent-secondary', activeTheme.secondary);
-    root.style.setProperty('--bg-dark', activeTheme.bgDark);
+    root.style.setProperty('--bg-primary', activeTheme.bgDark);
     root.style.setProperty('--bg-surface', activeTheme.bgSurface);
-    document.body.style.backgroundColor = activeTheme.bgDark;
+
+    if (activeTheme.isDark) {
+      root.classList.add('dark');
+      root.classList.remove('light');
+    } else {
+      root.classList.remove('dark');
+      root.classList.add('light');
+    }
   }, [activeTheme]);
 
   return (
@@ -190,6 +214,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       value={{
         activeTheme,
         setTheme,
+        toggleMode,
+        isDark,
         accentHex: activeTheme.accent,
         accentGlow: activeTheme.glow,
         soundEnabled,

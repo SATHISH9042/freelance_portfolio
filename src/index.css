@@ -3,12 +3,67 @@
 @tailwind utilities;
 
 :root {
+  color-scheme: light;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #F1F5F9;
+  --bg-surface-hover: #E2E8F0;
+  --text-primary: #090D16;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.18);
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-bg-hover: #FFFFFF;
+  --kinetic-text: rgba(15, 23, 42, 0.04);
+  --kinetic-stroke: rgba(15, 23, 42, 0.1);
+  --accent-color: #0066FF;
+  --accent-secondary: #00D2FF;
+  --accent-glow: rgba(0, 102, 255, 0.22);
+}
+
+.dark {
   color-scheme: dark;
+  --bg-primary: #06080C;
+  --bg-secondary: #0B0F17;
+  --bg-surface: #0E131F;
+  --bg-surface-elevated: #161D2E;
+  --bg-surface-hover: #1E273D;
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.2);
+  --card-bg: rgba(14, 19, 31, 0.92);
+  --card-bg-hover: rgba(22, 29, 46, 0.95);
+  --kinetic-text: rgba(255, 255, 255, 0.035);
+  --kinetic-stroke: rgba(255, 255, 255, 0.08);
+  --accent-color: #D4FF00;
+  --accent-secondary: #10B981;
+  --accent-glow: rgba(212, 255, 0, 0.2);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Subtle background grain effect */
 .bg-grain {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
+}
+
+/* Stroke typography for kinetic running names */
+.stroke-text {
+  -webkit-text-stroke: 1.5px var(--kinetic-stroke);
+  color: transparent;
+  transition: -webkit-text-stroke 0.4s ease;
+}
+.stroke-text-solid {
+  color: var(--kinetic-text);
+  transition: color 0.4s ease;
 }
 
 /* Refined custom scrollbar */
@@ -16,15 +71,15 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #06080C;
+  background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1F2937;
+  background: var(--text-muted);
+  opacity: 0.4;
   border-radius: 4px;
-  border: 2px solid #06080C;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #374151;
+  background: var(--accent-color);
 }
 
 /* Typography styles */
@@ -37,24 +92,48 @@
 
 /* Focus styles for accessibility */
 :focus-visible {
-  outline: 2px solid #D4FF00;
+  outline: 2px solid var(--accent-color);
   outline-offset: 3px;
 }
 
 /* Subtle hairline borders */
 .border-hairline {
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-color);
 }
 .border-hairline-hover:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--border-hover);
 }
 
-/* Glow effects */
-.glow-lime {
-  box-shadow: 0 0 30px -5px rgba(212, 255, 0, 0.2);
+/* Light mode high-contrast typography overrides */
+html:not(.dark) .text-white {
+  color: #090D16 !important;
 }
-.glow-cobalt {
-  box-shadow: 0 0 30px -5px rgba(0, 102, 255, 0.2);
+html:not(.dark) .text-slate-100 {
+  color: #0F172A !important;
+}
+html:not(.dark) .text-slate-200 {
+  color: #1E293B !important;
+}
+html:not(.dark) .text-slate-300 {
+  color: #334155 !important;
+}
+html:not(.dark) .text-slate-400 {
+  color: #475569 !important;
+}
+html:not(.dark) .text-slate-500 {
+  color: #64748B !important;
+}
+html:not(.dark) .bg-white\/5 {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+html:not(.dark) .bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.07) !important;
+}
+html:not(.dark) .border-white\/5,
+html:not(.dark) .border-white\/10,
+html:not(.dark) .border-white\/20,
+html:not(.dark) .border-white\/30 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
 }
 
 /* Smooth motion default */
@@ -66,4 +145,3 @@
     scroll-behavior: auto !important;
   }
 }
-
