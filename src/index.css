@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+/* Subtle background grain effect */
+.bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Refined custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #06080C;
+}
+::-webkit-scrollbar-thumb {
+  background: #1F2937;
+  border-radius: 4px;
+  border: 2px solid #06080C;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #374151;
+}
+
+/* Typography styles */
+.font-display {
+  font-family: 'Syne', sans-serif;
+}
+.font-mono-code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid #D4FF00;
+  outline-offset: 3px;
+}
+
+/* Subtle hairline borders */
+.border-hairline {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.border-hairline-hover:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Glow effects */
+.glow-lime {
+  box-shadow: 0 0 30px -5px rgba(212, 255, 0, 0.2);
+}
+.glow-cobalt {
+  box-shadow: 0 0 30px -5px rgba(0, 102, 255, 0.2);
+}
+
+/* Smooth motion default */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
