@@ -8,11 +8,21 @@
 
 ## 🌟 Key Highlights & Architectural Features
 
-### 1. Award-Winning Creative-Agency Aesthetic
-- **Editorial Typography & Contrast**: Deep midnight charcoal background (`#06080C`, `#0B0F17`) paired with warm white typography and subtle SVG background grain.
-- **Dynamic Accent Switcher**: Live toggle between **Electric Lime** (`#D4FF00`) and **Vibrant Cobalt Blue** (`#0066FF`), with automatic CSS variable propagation and ambient glow.
-- **Subtle Synthesized Audio Haptics**: Built-in sound feedback using the browser's native **Web Audio API** (sine/triangle oscillators)—zero external audio assets required, muted by default.
-- **Custom Desktop Cursor**: Physics-based trailing magnetic cursor with interactive element detection, automatically disabled on touch devices and for users who prefer reduced motion.
+### 1. Award-Winning Creative-Agency Aesthetic & Curated Themes
+- **5 Handcrafted Agency Theme Presets**:
+  1. 🌟 **Electric Lime**: Deep obsidian (`#06080C`) + Lime (`#D4FF00`) + Emerald accents.
+  2. 🌌 **Cyber Cobalt**: Deep ocean navy (`#050914`) + Cyber Blue (`#0066FF`) + Cyan accents.
+  3. 🔮 **Violet Amethyst**: Deep astral charcoal (`#090611`) + Electric Purple (`#A855F7`) + Pink accents.
+  4. 🌅 **Solar Ember**: Warm smoky espresso (`#0A0806`) + Amber Gold (`#F59E0B`) + Coral accents.
+  5. 🍵 **Neo Emerald**: Dark jade (`#050C09`) + Mint Emerald (`#10B981`) + Teal accents.
+- **Dynamic Floating Theme Switcher**: Interactive popover in the navigation bar with real-time color swatches, theme names, and audio toggles.
+- **Harmonic Theme Chimes**: When switching themes, an ascending major triad is synthesized via the browser's native **Web Audio API**.
+- **Interactive Ambient Lighting & Floating Constellations**: Canvas particle nodes drift and connect with delicate hairline strands while soft radial glow orbs follow the active theme's colors.
+- **Hairline Scroll Progress Indicator**: Spring-smoothed gradient bar at the top of the viewport tracking reading progression.
+- **Infinite Editorial Marquee Ticker**: Continuous typography ribbon between the Hero and Projects sections highlighting engineering values.
+- **Staggered Word-by-Word Hero Reveal**: Headline emerges with spring-damped blur-to-sharpness animation.
+- **3D Card Perspective Tilt**: Interactive transformation card and project previews tilt subtly based on mouse coordinates.
+- **Physics-Based Custom Cursor**: Trailing magnetic ring and precise inner dot with hover scaling, auto-disabled on touch devices and for reduced motion.
 
 ### 2. High-Impact Hero Section
 - **Opening Headline**: *“I build digital experiences that feel effortless.”*
