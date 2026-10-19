@@ -196,3 +196,4 @@ All content, personal details, and project links are centralized in one single, 
 
 ## 📄 License
 This portfolio is open source and available under the **MIT License**.
+
